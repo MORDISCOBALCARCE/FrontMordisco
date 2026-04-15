@@ -1,0 +1,36 @@
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #57382e;
+  padding: 12px 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+nav h2 {
+  color: white;
+  margin: 0;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+
+nav a:hover {
+  color: #d44e00e7;
+}
+
+.logo {
+    width: 100px;
+    object-fit: contain
+}
+
+.active {
+  border-bottom: 2px solid #ffb48a;
+  padding-bottom: 2px; /*hace que cuando vamos a otra ruto este seleccionada*/
+}
