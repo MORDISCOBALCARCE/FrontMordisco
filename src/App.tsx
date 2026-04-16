@@ -1,12 +1,12 @@
-
+import Promociones from "./componentes/promociones/promociones";
 
 function App() {
-  
-
   return (
-    <><h1>esto es dev...sapeeeeeee</h1>
-         </>
-  )
+    <>
+      <img src="src/assets/img/logo vectorizado.png" alt="logo" className="logo"/>
+      <Promociones />
+    </>
+  );
 }
 
-export default App
+export default App;
