@@ -14,26 +14,27 @@ function Login() {
 
 
   return (
-    <>
-
-      <section className='login-container'>
+    <section className='login-container'>
       <h2>Página de Login</h2>
 
-        <form onSubmit={handleSubmit} className='login-form'>
-          <label htmlFor="">Nombre</label>
-          <input type="text" name="" id="" />
-          <label htmlFor="">Apellido</label>
-          <input type="text" name="" id="" />
-          <label htmlFor="">E-mail</label>
-          <input type="text" name="" id="" />
-          <label htmlFor="">Contraseña</label>
-          <input type="text" name="" id="" />
+      <form onSubmit={handleSubmit} className='login-form'>
+        <label htmlFor="nombre">Nombre</label>
+        <input type="text" name="nombre" />
+
+        <label htmlFor="apellido">Apellido</label>
+        <input type="text" name="apellido" />
+
+        <label htmlFor="email">E-mail</label>
+        <input type="email" name="email" />
+
+        <label htmlFor="pass">Contraseña</label>
+        <input type="password" name="pass" />
 
         <button type="submit">Iniciar sesión</button>
-        </form>
 
-      </section>
-    </>
+      </form>
+
+    </section>
   );
 }
 
