@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Route, useNavigate } from "react-router-dom";
 import './login.css'
 import type React from "react";
 
@@ -9,7 +9,7 @@ function Login() {
     e.preventDefault();
 
     console.log("Login OK:");
-    navigate("/home");
+    navigate(-1);
   };
 
 
