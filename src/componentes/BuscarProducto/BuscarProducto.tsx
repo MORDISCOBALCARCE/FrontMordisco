@@ -1,4 +1,5 @@
 import { useState } from "react";
+import getFilteredProductos from "../../hooks/getData";
 
 type SearchProps = {
   onSearch: (buscar: string) => void;

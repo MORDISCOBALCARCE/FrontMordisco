@@ -1,0 +1,43 @@
+{"categorias":[  
+  {"id": 1,
+    "nombre": "Comidas",
+    "icono": "restaurant",
+    "bg": "bg-orange-100 dark:bg-orange-900/30",
+    "color": "text-primary"
+  },
+  {
+    "id": 2,
+    "nombre": "Bebidas",
+    "icono": "local_bar",
+    "bg": "bg-blue-50 dark:bg-blue-900/30",
+    "color": "text-blue-500"
+  },
+  {
+    "id": 3,
+    "nombre": "Postres",
+    "icono": "icecream",
+    "bg": "bg-pink-50 dark:bg-pink-900/30",
+    "color": "text-pink-500"
+  },
+  {
+    "id": 4,
+    "nombre": "Pizza",
+    "icono": "local_pizza",
+    "bg": "bg-yellow-50 dark:bg-yellow-900/30",
+    "color": "text-yellow-600"
+  },
+  {
+    "id": 5,
+    "nombre": "Sushi",
+    "icono": "set_meal",
+    "bg": "bg-green-50 dark:bg-green-900/30",
+    "color": "text-green-600"
+  },
+  {
+    "id": 6,
+    "nombre": "Saludable",
+    "icono": "eco",
+    "bg": "bg-emerald-50 dark:bg-emerald-900/30",
+    "color": "text-emerald-500"
+  }
+]}

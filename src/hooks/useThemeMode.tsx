@@ -1,5 +1,5 @@
 import { useEffect,useState } from "react";
-import { type Theme } from '../../types/types'
+import { type Theme } from '../types/types'
 
 function getSystemTheme(){
     return window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light'
@@ -10,11 +10,12 @@ export function useThemeMode(){
 
     useEffect(()=>{
         if (theme === 'dark'){
+            document.documentElement.classList.remove('light')
             document.documentElement.classList.add('dark')
 
         }else 
             document.documentElement.classList.remove('dark')
-            // document.documentElement.classList.add('light')
+
     },[theme]);
 
     const toggleTheme = () => {
