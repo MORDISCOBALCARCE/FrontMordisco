@@ -1,6 +1,6 @@
 import type { Theme } from "../../types/types"
 
-interface Props{
+export interface Props{
     theme:Theme
     onToggle: () => void
 }

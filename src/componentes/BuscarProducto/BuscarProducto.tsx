@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from "react"; 
 
 type SearchProps = {
   onSearch: (buscar: string) => void;

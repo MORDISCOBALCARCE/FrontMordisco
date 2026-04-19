@@ -1,14 +1,10 @@
 import { NavLink } from "react-router-dom";
 import './navbar.css';
 import logo from "../../assets/img/logo vectorizado.png";
-import { ThemeToggle } from "./themeToggle";
-import { useThemeMode } from "./useThemeMode";
+import {type Props, ThemeToggle } from "./themeToggle";
 
 
-
-
-function Navbar() {
-  const {theme,toggleTheme} = useThemeMode()
+function Navbar({theme,onToggle}:Props) {
   return (
     <nav>
       <div>
@@ -16,7 +12,7 @@ function Navbar() {
         <img className="logo" src={logo} alt='logo'/>
         </NavLink>
         </div>
-        <ThemeToggle theme={theme} onToggle={toggleTheme} />
+        <ThemeToggle theme={theme} onToggle={onToggle} />
         <div>
         <NavLink to="/login">Iniciar sesión</NavLink>
       </div>
