@@ -2,7 +2,7 @@ import { SearchProducts } from "../BuscarProducto/BuscarProducto";
 import { type Categoria } from "../Categorias/Categorias.types";
 import { Categorias } from "../Categorias/Categorias";
 import Hamburgesa from "../hamburguesa/hamburgesa";
-import { categoriasMock } from "../Categorias/Categorias.data";
+import { categoriasMock } from "../../data/Categorias.data";
 import Promociones from "../promociones/promociones";
 
 export default function Home(){
