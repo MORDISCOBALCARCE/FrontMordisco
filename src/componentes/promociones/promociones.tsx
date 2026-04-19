@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { productosMock } from "./promociones.data";
+import { productosMock } from "../../data/productos.data";
 import styles from "./Promociones.module.css";
 
 export default function Promociones() {

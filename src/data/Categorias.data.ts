@@ -1,4 +1,4 @@
-import { type Categoria } from "./Categorias.types";
+import { type Categoria } from "../componentes/Categorias/Categorias.types";
 
 export const categoriasMock: Categoria[] = [  
   {id: 1,

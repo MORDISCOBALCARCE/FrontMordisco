@@ -1,4 +1,4 @@
-import { type Producto } from "./promociones.types";
+import { type Producto } from "../componentes/promociones/promociones.types";
 
 export const productosMock: Producto[] = [
   {
@@ -8,7 +8,7 @@ export const productosMock: Producto[] = [
     precio: 4500,
     imagen: "https://images.unsplash.com/photo-1604908176997-431b6f36c0c8",
     alt: "Plato de milanesa con papas fritas",
-    categoria: "promociones"
+    categoria: "Comidas"
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ export const productosMock: Producto[] = [
     precio: 6000,
     imagen: "https://images.unsplash.com/photo-1604909052743-94e838986d24",
     alt: "Empanadas en bandeja",
-    categoria: "promociones"
+    categoria: "Comidas"
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ export const productosMock: Producto[] = [
     precio: 7000,
     imagen: "https://images.unsplash.com/photo-1625944525533-473f1b1f8c3b",
     alt: "Rabas fritas con rodajas de limón",
-    categoria: "promociones"
+    categoria: "Comidas"
   },
   {
     id: 4,
@@ -35,7 +35,7 @@ export const productosMock: Producto[] = [
     precio: 2500,
     imagen: "https://images.unsplash.com/photo-1550547660-d9450f859349",
     alt: "Pancho con papas pay y salsas",
-    categoria: "promociones"
+    categoria: "Comidas"
   },
   {
     id: 5,
@@ -44,7 +44,7 @@ export const productosMock: Producto[] = [
     precio: 5000,
     imagen: "https://images.unsplash.com/photo-1601924582975-7aa3b6f6f2b4",
     alt: "Pizza muzzarella recién horneada",
-    categoria: "promociones"
+    categoria: "Pizza"
   },
   {
     id: 6,
@@ -62,7 +62,7 @@ export const productosMock: Producto[] = [
     precio: 6000,
     imagen: "https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56",
     alt: "Milanesa napolitana con queso gratinado",
-    categoria: "promociones"
+    categoria: "Comidas"
   },
   {
     id: 8,
@@ -71,7 +71,7 @@ export const productosMock: Producto[] = [
     precio: 5200,
     imagen: "https://images.unsplash.com/photo-1604908554027-3c51cfc2a9f6",
     alt: "Suprema de pollo con ensalada",
-    categoria: "promociones"
+    categoria: "Comidas"
   },
   {
     id: 9,
@@ -80,7 +80,7 @@ export const productosMock: Producto[] = [
     precio: 4000,
     imagen: "https://images.unsplash.com/photo-1606756790138-261d2b21cd6c",
     alt: "Sandwich de milanesa con vegetales",
-    categoria: "promociones"
+    categoria: "Comidas"
   },
   {
     id: 10,
@@ -89,7 +89,7 @@ export const productosMock: Producto[] = [
     precio: 6500,
     imagen: "https://images.unsplash.com/photo-1550547660-d9450f859349",
     alt: "Lomito completo con papas",
-    categoria: "promociones"
+    categoria: "Comidas"
   },
   {
     id: 11,
@@ -98,7 +98,7 @@ export const productosMock: Producto[] = [
     precio: 2000,
     imagen: "https://images.unsplash.com/photo-1576107232684-1279f390859f",
     alt: "Porción grande de papas fritas",
-    categoria: "promociones"
+    categoria: "Comidas"
   },
   {
     id: 12,
@@ -107,7 +107,7 @@ export const productosMock: Producto[] = [
     precio: 1800,
     imagen: "https://images.unsplash.com/photo-1581006852262-e4307cf6283a",
     alt: "Botella de gaseosa 1.5 litros",
-    categoria: "promociones"
+    categoria: "Bebidas"
   },
   {
     id: 13,
@@ -116,7 +116,7 @@ export const productosMock: Producto[] = [
     precio: 2200,
     imagen: "https://images.unsplash.com/photo-1608270586620-248524c67de9",
     alt: "Lata de cerveza rubia",
-    categoria: "promociones"
+    categoria: "Bebidas"
   },
   {
     id: 14,
@@ -125,7 +125,7 @@ export const productosMock: Producto[] = [
     precio: 2500,
     imagen: "https://images.unsplash.com/photo-1625944524995-2f1c59a6c36e",
     alt: "Flan casero con dulce de leche",
-    categoria: "promociones"
+    categoria: "Postres"
   },
   {
     id: 15,
@@ -134,6 +134,6 @@ export const productosMock: Producto[] = [
     precio: 4000,
     imagen: "https://images.unsplash.com/photo-1563805042-7684c019e1cb",
     alt: "Helado medio kilo en pote",
-    categoria: "promociones"
+    categoria: "Postres"
   }
 ]
