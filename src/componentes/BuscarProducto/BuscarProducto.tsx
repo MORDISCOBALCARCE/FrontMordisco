@@ -10,7 +10,7 @@ export function SearchProducts({onSearch}:SearchProps){
     const handleSearch = () => {
         onSearch(buscar);
         setBuscar('');
-  };
+    };
     
     return (
         <>
