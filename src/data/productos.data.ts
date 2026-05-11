@@ -80,7 +80,7 @@ export const productosMock: Producto[] = [
     precio: 4000,
     imagen: "https://images.unsplash.com/photo-1606756790138-261d2b21cd6c",
     alt: "Sandwich de milanesa con vegetales",
-    categoria: "Comidas"
+    categoria: "promociones"
   },
   {
     id: 10,

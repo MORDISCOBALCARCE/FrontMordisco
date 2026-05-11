@@ -10,7 +10,6 @@ export function useThemeMode(){
 
     useEffect(()=>{
         if (theme === 'dark'){
-            document.documentElement.classList.remove('light')
             document.documentElement.classList.add('dark')
 
         }else 

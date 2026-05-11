@@ -14,6 +14,7 @@ function Navbar({theme,onToggle}:Props) {
         </div>
         <ThemeToggle theme={theme} onToggle={onToggle} />
         <div>
+          <NavLink to="/Menu">Menu</NavLink>
         <NavLink to="/login">Iniciar sesión</NavLink>
       </div>
     </nav>

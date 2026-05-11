@@ -4,6 +4,7 @@ import Login from "./componentes/Login/Login";
 import Footer from "./componentes/Footer/Footer";
 import Home from "./componentes/home/home";
 import { useThemeMode } from './hooks/useThemeMode';
+import Menu from './componentes/menu/menu';
 
 function App() {
     const {theme,toggleTheme} = useThemeMode()
@@ -19,6 +20,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />}/>
             <Route path="/login" element={<Login/>}/>
+            <Route path="/menu" element={<Menu />}/>
           </Routes>
       </main>
           <Footer/>
