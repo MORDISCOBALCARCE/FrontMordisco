@@ -1,36 +1,109 @@
+.glass-nav {
+  background-color: #FFFBF2;
+  /* Color crema de fondo */
+  height: 100px;
+  /* Un poco más alto para el logo grande */
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #FEEED7;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-nav {
+.nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #57382e;
-  padding: 12px 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-nav h2 {
-  color: white;
-  margin: 0;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
 }
 
-nav a {
-  color: white;
+/* --- LOGO GRANDE --- */
+.logo-img {
+  height: 150px;
+  /* Tamaño aumentado */
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.05);
+}
+
+.nav-links-center {
+  display: flex;
+  gap: 40px;
+}
+
+.nav-links-center a {
   text-decoration: none;
-  font-weight: 500;
+  color: #5D4037;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* --- LADO DERECHO --- */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  /* Espacio entre los 3 bloques */
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  color: #5D4037;
+}
+
+/* Carrito y Badge */
+.cart-icon-wrapper {
   position: relative;
-  transition: color 0.2s ease;
 }
 
-
-nav a:hover {
-  color: #d44e00e7;
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #FF5C1F;
+  /* Naranja Mordisco */
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 11px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #FFFBF2;
 }
 
-.logo {
-    width: 100px;
-    object-fit: contain
+/* Botón Mi Cuenta */
+.btn-account {
+  background-color: #5D4037;
+  /* Marrón Chocolate */
+  color: white !important;
+  padding: 12px 28px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: 700;
 }
 
-.active {
-  border-bottom: 2px solid #ffb48a;
-  padding-bottom: 2px; /*hace que cuando vamos a otra ruto este seleccionada*/
+.btn-account .material-icons-round {
+  color: white;
+  font-size: 20px;
+}
+
+/* Iconos generales */
+.material-icons-round {
+  font-size: 28px;
+  cursor: pointer;
 }
