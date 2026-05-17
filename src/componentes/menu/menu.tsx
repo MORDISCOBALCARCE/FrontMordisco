@@ -6,10 +6,10 @@ import styles from './menu.module.css'
 
 
 export default function Menu() {
+    
     const [producto] = useState<Producto[]>(productosMock);
     const [filtcategoria, setFiltCategoria] = useState<Producto[]>(productosMock)
 
- 
         function selCategoria(cat: string) {
             const select = producto.filter((prod: Producto) => prod.categoria.includes(cat))
             setFiltCategoria(select)

@@ -5,6 +5,7 @@ import Footer from "./componentes/Footer/Footer";
 import Home from "./componentes/home/home";
 import { useThemeMode } from './hooks/useThemeMode';
 import Menu from './componentes/menu/menu';
+import { CategoNombre } from './componentes/Categorias/CategoNombre/CategoNombre';
 
 function App() {
   const { theme, toggleTheme } = useThemeMode()
@@ -21,6 +22,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/menu" element={<Menu />} />
+              <Route path="/categoria/:nombre" element={<CategoNombre/>} />
             </Routes>
           </main>
           <Footer />

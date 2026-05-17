@@ -6,7 +6,7 @@ export const productosMock: Producto[] = [
     titulo: "Milanesa con papas",
     descripcion: "Milanesa de carne con papas fritas crocantes",
     precio: 4500,
-    imagen: "https://images.unsplash.com/photo-1604908176997-431b6f36c0c8",
+    imagen: "https://images.unsplash.com/photo-1665056511905-1ca20935db27",
     alt: "Plato de milanesa con papas fritas",
     categoria: "Comidas"
   },
@@ -24,7 +24,7 @@ export const productosMock: Producto[] = [
     titulo: "Rabas",
     descripcion: "Rabas fritas con limón y salsa tártara",
     precio: 7000,
-    imagen: "https://images.unsplash.com/photo-1625944525533-473f1b1f8c3b",
+    imagen: "https://malevamag.com/wp-content/uploads/2017/01/rabas.jpg",
     alt: "Rabas fritas con rodajas de limón",
     categoria: "Comidas"
   },
@@ -42,7 +42,7 @@ export const productosMock: Producto[] = [
     titulo: "Pizza muzzarella",
     descripcion: "Pizza clásica con abundante muzzarella",
     precio: 5000,
-    imagen: "https://images.unsplash.com/photo-1601924582975-7aa3b6f6f2b4",
+    imagen: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002",
     alt: "Pizza muzzarella recién horneada",
     categoria: "Pizza"
   },
@@ -60,7 +60,7 @@ export const productosMock: Producto[] = [
     titulo: "Milanesa napolitana",
     descripcion: "Milanesa con salsa, jamón y queso gratinado",
     precio: 6000,
-    imagen: "https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56",
+    imagen: "https://i.ytimg.com/vi/tNxrUt0tvNA/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBDJ4nT3gZCaTAZmgnb7IHElgrsdQ",
     alt: "Milanesa napolitana con queso gratinado",
     categoria: "Comidas"
   },
@@ -69,7 +69,7 @@ export const productosMock: Producto[] = [
     titulo: "Suprema con ensalada",
     descripcion: "Pollo grillado con ensalada fresca",
     precio: 5200,
-    imagen: "https://images.unsplash.com/photo-1604908554027-3c51cfc2a9f6",
+    imagen: "https://thumbs.dreamstime.com/b/pollo-supremo-en-el-pappardelle-vegetal-108172104.jpg",
     alt: "Suprema de pollo con ensalada",
     categoria: "Comidas"
   },
@@ -78,7 +78,7 @@ export const productosMock: Producto[] = [
     titulo: "Sandwich de milanesa",
     descripcion: "Pan francés con milanesa, lechuga y tomate",
     precio: 4000,
-    imagen: "https://images.unsplash.com/photo-1606756790138-261d2b21cd6c",
+    imagen: "https://as1.ftcdn.net/v2/jpg/04/67/24/08/1000_F_467240815_dofrsNBpaquCDB334IE04tAyr5Cu8i2t.jpg",
     alt: "Sandwich de milanesa con vegetales",
     categoria: "promociones"
   },
@@ -105,7 +105,7 @@ export const productosMock: Producto[] = [
     titulo: "Gaseosa 1.5L",
     descripcion: "Coca, Pepsi o Sprite",
     precio: 1800,
-    imagen: "https://images.unsplash.com/photo-1581006852262-e4307cf6283a",
+    imagen: "https://images.unsplash.com/photo-1517959105821-eaf2591984ca",
     alt: "Botella de gaseosa 1.5 litros",
     categoria: "Bebidas"
   },
@@ -113,8 +113,8 @@ export const productosMock: Producto[] = [
     id: 13,
     titulo: "Cerveza lata",
     descripcion: "Rubia o negra 473ml",
-    precio: 2200,
-    imagen: "https://images.unsplash.com/photo-1608270586620-248524c67de9",
+    precio: 2200, 
+    imagen: "https://images.unsplash.com/photo-1581006852262-e4307cf6283a",
     alt: "Lata de cerveza rubia",
     categoria: "Bebidas"
   },
@@ -123,7 +123,7 @@ export const productosMock: Producto[] = [
     titulo: "Flan casero",
     descripcion: "Flan con dulce de leche y crema",
     precio: 2500,
-    imagen: "https://images.unsplash.com/photo-1625944524995-2f1c59a6c36e",
+    imagen: "https://images.unsplash.com/photo-1702728109878-c61a98d80491",
     alt: "Flan casero con dulce de leche",
     categoria: "Postres"
   },

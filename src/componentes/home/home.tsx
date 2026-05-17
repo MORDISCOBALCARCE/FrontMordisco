@@ -1,5 +1,4 @@
 import { SearchProducts } from "../BuscarProducto/BuscarProducto";
-import { type Categoria } from "../Categorias/Categorias.types";
 import { Categorias } from "../Categorias/Categorias";
 import { categoriasMock } from "../../data/Categorias.data";
 import Promociones from "../promociones/promociones";
@@ -19,9 +18,7 @@ export default function Home() {
         setFiltProducto(resultBusquedo)
     };
 
-    const handleCategoria = (categoria: Categoria) => {
-        console.log('Categoria seleccionada', categoria)
-    };
+
     return (
         <>
             <Promociones />
@@ -32,8 +29,7 @@ export default function Home() {
             </section>
 
             <Categorias
-                categorias={categoriasMock}
-                onSelectCategoria={handleCategoria} />
+                categorias={categoriasMock}/>
         </>
     )
 }

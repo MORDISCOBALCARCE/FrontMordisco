@@ -1,11 +1,14 @@
+import { useNavigate} from "react-router-dom";
 import { type Categoria } from "./Categorias.types";
+
 
 type CategoriasProps = {
   categorias: Categoria[];
-  onSelectCategoria?: (categoria: Categoria) => void;
 };
 
-export const Categorias = ({ categorias, onSelectCategoria }: CategoriasProps) => {
+export const Categorias = ({ categorias }: CategoriasProps) => {
+const navigate = useNavigate();
+
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -22,13 +25,13 @@ export const Categorias = ({ categorias, onSelectCategoria }: CategoriasProps) =
       </div>
 
       {/* GRID */}
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
 
         {categorias.map((cat) => (
           <div
             key={cat.id}
             className="group cursor-pointer"
-            onClick={() => onSelectCategoria?.(cat)}
+            onClick={() => {navigate(`categoria/${cat.nombre}`)}}
           >
             <div className="bg-white dark:bg-gray-800 rounded-3xl p-6 flex flex-col items-center justify-center transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-orange-200 border border-transparent hover:border-primary">
 
