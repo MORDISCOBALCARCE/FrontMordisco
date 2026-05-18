@@ -14,8 +14,11 @@ export default function Home() {
 
 
     const handleSearch = (buscar: string) => {
-        const resultBusquedo = producto.filter((prod: Producto) => prod.titulo.toLowerCase().trim().includes(buscar.toLowerCase().trim()));
-        setFiltProducto(resultBusquedo)
+       if(buscar != ""){
+           const resultBusquedo = producto.filter((prod: Producto) => prod.titulo.toLowerCase().trim().includes(buscar.toLowerCase().trim()));
+           setFiltProducto(resultBusquedo)
+       } 
+
     };
 
 

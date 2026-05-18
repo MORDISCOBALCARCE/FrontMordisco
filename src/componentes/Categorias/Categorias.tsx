@@ -18,7 +18,7 @@ const navigate = useNavigate();
           Categorías
         </h2>
 
-        <a className="text-primary font-semibold flex items-center gap-1 hover:underline" href="#">
+        <a className="text-primary font-semibold flex items-center gap-1 hover:underline" href="/menu">
           Ver todas
           <span className="material-icons-round text-sm">arrow_forward</span>
         </a>
