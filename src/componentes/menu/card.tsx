@@ -8,7 +8,7 @@ export function Card({producto}:Props){
 return(
     <div className="bg-white dark:bg-slate-800 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group border border-transparent hover:border-primary/20 flex flex-col h-full">
         <div className="h-48 overflow-hidden relative">
-            <img alt="Hamburguesa Mordisco" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={producto.imagen}/>
+            <img alt={producto.alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={producto.imagen}/>
             <div className="absolute top-4 right-4 bg-primary text-white font-bold px-3 py-1 rounded-full shadow-lg">${producto.precio}</div>
         </div>
         <div className="p-6 flex flex-col flex-grow">

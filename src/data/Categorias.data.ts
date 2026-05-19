@@ -27,19 +27,5 @@ export const categoriasMock: Categoria[] = [
     icono: "local_pizza",
     bg: "bg-yellow-50 dark:bg-yellow-900/30",
     color: "text-yellow-600",
-  },
-  {
-    id: 5,
-    nombre: "Sushi",
-    icono: "set_meal",
-    bg: "bg-green-50 dark:bg-green-900/30",
-    color: "text-green-600",
-  },
-  {
-    id: 6,
-    nombre: "Saludable",
-    icono: "eco",
-    bg: "bg-emerald-50 dark:bg-emerald-900/30",
-    color: "text-emerald-500",
-  },
+  }
 ];

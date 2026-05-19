@@ -1,6 +1,6 @@
-import{BrowserRouter,Routes, Route} from 'react-router-dom';
-import Navbar from "./componentes/nav-bar/Navbar";
-import Login from "./componentes/Login/Login";  
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Navbar } from "./componentes/nav-bar/Navbar";
+import Login from "./componentes/Login/Login";
 import Footer from "./componentes/Footer/Footer";
 import Home from "./componentes/home/home";
 import { useThemeMode } from './hooks/useThemeMode';
@@ -8,9 +8,10 @@ import Menu from './componentes/menu/menu';
 import { AuthProvider } from './context/AuthContext';
 import PublicRoute from './routes/PublicRoute';
 import ProtectedRoute from './routes/ProtectedAccountRoute';
+import { CategoNombre } from './componentes/Categorias/CategoNombre/CategoNombre';
 
 function App() {
-    const {theme,toggleTheme} = useThemeMode()
+  const { theme, toggleTheme } = useThemeMode()
 
   return (
     <>
@@ -31,6 +32,7 @@ function App() {
               <Route element={<ProtectedRoute/>}>
                 <Route path="/menu" element={<Menu />}/>
               </Route>
+              <Route path="/categoria/:nombre" element={<CategoNombre/>} />
             </Routes>
         </main>
             <Footer/>
@@ -42,3 +44,4 @@ function App() {
 }
 
 export default App
+
