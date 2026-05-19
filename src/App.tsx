@@ -5,6 +5,9 @@ import Footer from "./componentes/Footer/Footer";
 import Home from "./componentes/home/home";
 import { useThemeMode } from './hooks/useThemeMode';
 import Menu from './componentes/menu/menu';
+import { AuthProvider } from './context/AuthContext';
+import PublicRoute from './routes/PublicRoute';
+import ProtectedRoute from './routes/ProtectedAccountRoute';
 import { CategoNombre } from './componentes/Categorias/CategoNombre/CategoNombre';
 
 function App() {
@@ -12,22 +15,30 @@ function App() {
 
   return (
     <>
-
-      <div className="min-h-screen bg-background-light dark:bg-background-dark text-secondary dark:text-gray-100 transition-colors duration-300">
+    
+    <div className="min-h-screen bg-background-light dark:bg-background-dark text-secondary dark:text-gray-100 transition-colors duration-300">
+      <AuthProvider>
         <BrowserRouter>
-          <Navbar theme={theme} onToggle={toggleTheme} />
+        <Navbar theme={theme} onToggle={toggleTheme} />
 
-          <main className="conte-main pt-20 px-4">
+        <main className="conte-main pt-20 px-4">
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/menu" element={<Menu />} />
+              <Route element={<PublicRoute/>}>
+                <Route path="/" element={<Home />}/>
+              </Route>
+              <Route element={<PublicRoute />}>
+                <Route path="/login" element={<Login />} />
+              </Route>
+              <Route element={<ProtectedRoute/>}>
+                <Route path="/menu" element={<Menu />}/>
+              </Route>
               <Route path="/categoria/:nombre" element={<CategoNombre/>} />
             </Routes>
-          </main>
-          <Footer />
+        </main>
+            <Footer/>
         </BrowserRouter>
-      </div>
+      </AuthProvider>
+    </div>
     </>
   )
 }

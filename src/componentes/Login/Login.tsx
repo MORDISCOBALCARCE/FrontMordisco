@@ -1,18 +1,25 @@
 import { useNavigate } from "react-router-dom";
 import './login.css'
 import type React from "react";
+import { useAuth } from "../../context/AuthContext";
 
-function Login() {
+export function Login() {
+  const {login} = useAuth()
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.SubmitEvent) => {
     e.preventDefault();
+    
+    const target = e.target as typeof e.target & {
+      nombre: { value: string };
+      password: { value: string };
+    };
 
-    console.log("Login OK:");
-
-    //se cambio -1 por la ruta de Mi Cuenta
-    navigate("/micuenta");
-  };
+    const nombre : string = target.nombre.value
+    const password : string = target.password.value
+    login(nombre,password)
+    navigate("/micuenta")
+  }
 
   return (
     <section className='login-container'>
@@ -40,5 +47,3 @@ function Login() {
     </section>
   );
 }
-
-export default Login;
