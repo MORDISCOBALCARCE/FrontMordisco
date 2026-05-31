@@ -1,14 +1,12 @@
-import {Navbar} from "../nav-bar/Navbar";
-import type {Theme} from "../../types/types";
+import { useAuth } from "../auth/context/AuthContex"
 
-interface Props {
-    theme: Theme;
-    onToggle: () => void;
-}
 
-export function MiCuenta({theme, onToggle}:Props) {
+export function MiCuenta() {
+    const {user} = useAuth()
+    
     return(
-        <> <Navbar theme={theme} onToggle = {onToggle} />
+        <>
+        <h1>Mi cuenta = {user?.nombre}</h1>
         </>
        
     )
