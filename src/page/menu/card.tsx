@@ -1,4 +1,4 @@
-import { type Producto } from "../promociones/promociones.types"
+import { type Producto } from "../../componentes/promociones/promociones.types"
 
 interface Props {
     producto:Producto

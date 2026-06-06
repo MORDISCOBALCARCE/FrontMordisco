@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import type { Producto } from "../../promociones/promociones.types";
 import { useState } from "react";
 import { productosMock } from "../../../data/productos.data";
-import { Card } from "../../menu/card";
+import { Card } from "../../../page/menu/card";
 import styles from './cate.module.css'
 
 
