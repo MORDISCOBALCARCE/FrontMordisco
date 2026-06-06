@@ -1,4 +1,4 @@
-import { useAuth } from "../auth/context/AuthContex"
+import { useAuth } from "../../context/AuthContex"
 
 
 export function MiCuenta() {
@@ -6,7 +6,7 @@ export function MiCuenta() {
     
     return(
         <>
-        <h1>Mi cuenta = {user?.nombre}</h1>
+        <h1>Mi cuenta : {user?.nombre}</h1>
         </>
        
     )

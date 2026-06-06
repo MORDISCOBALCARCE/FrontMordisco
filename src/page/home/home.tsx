@@ -1,8 +1,8 @@
-import { SearchProducts } from "../BuscarProducto/BuscarProducto";
-import { Categorias } from "../Categorias/Categorias";
+import { SearchProducts } from "../../componentes/BuscarProducto/BuscarProducto";
+import { Categorias } from "../../componentes/Categorias/Categorias";
 import { categoriasMock } from "../../data/Categorias.data";
-import Promociones from "../promociones/promociones";
-import type { Producto } from "../promociones/promociones.types";
+import Promociones from "../../componentes/promociones/promociones";
+import type { Producto } from "../../componentes/promociones/promociones.types";
 import { productosMock } from "../../data/productos.data";
 import { useState } from "react";
 import { Card } from "../menu/card";

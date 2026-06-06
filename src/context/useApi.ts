@@ -5,7 +5,7 @@ export function useApi(){
    
     const fetchAuth = async (url: string, options = {})=>{
         const headers = {
-            'Content-Type' : 'application-json',
+            'Content-Type' : 'application/json',
             Authorization : `Bearer ${token}`,
             ...options
         }

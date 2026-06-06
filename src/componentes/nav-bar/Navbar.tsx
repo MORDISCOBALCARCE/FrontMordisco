@@ -1,9 +1,9 @@
-import { NavLink, useLocation, useNavigate } from "react-router-dom"; // Importamos useLocation
+import { NavLink, useNavigate } from "react-router-dom"; // Importamos useLocation
 import logo from "../../assets/img/logo vectorizado.png";
 import { ThemeToggle } from "./themeToggle";
 import type { Theme } from "../../types/types";
 import "./navbar.css";
-import { useAuth } from "../auth/context/AuthContex";
+import { useAuth } from "../../context/AuthContex";
 
 interface Props {
   theme: Theme;
@@ -12,8 +12,8 @@ interface Props {
 
 export function Navbar({ theme, onToggle }: Props) {
   // El hook useLocation nos dice en qué ruta estamos parados
-  const location = useLocation();
-  const { token, logout, user} = useAuth();
+  // const location = useLocation();
+  const { logout, user, isAuthenticate} = useAuth();
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -21,19 +21,19 @@ export function Navbar({ theme, onToggle }: Props) {
     navigate('/')
   }
   // Creamos una constante que es true si estamos en la página de Mi Cuenta
-  const isMiCuentaPage = location.pathname === "/micuenta";
+  // const isMiCuentaPage = location.pathname === "/micuenta";
 
   return (
     <nav className="glass-nav">
-      <div className="nav-container">
+      <section className="nav-container">
 
-        <div className="logo-section">
+        <article className="logo-section">
           <NavLink to="/">
             <img className="logo-img" src={logo} alt="mordisco" />
           </NavLink>
-        </div>
+        </article>
 
-        <div className="nav-actions">
+        <article className="nav-actions">
           {/* 1. Botón del tema */}
           <div className="action-item">
             <ThemeToggle theme={theme} onToggle={onToggle} />
@@ -45,24 +45,31 @@ export function Navbar({ theme, onToggle }: Props) {
             <span className="cart-badge">2</span>
           </div>
 
-          {/* 3. El Menú siempre visible */}
+          {/*  El Menú siempre visible */}
           <NavLink to="/menu" className="btn-account">
             menu
           </NavLink>
 
-          {/* 4. LÓGICA DE AUTENTICACIÓN MEJORADA */}
-          {token ? (
+
+          {isAuthenticate ? (
             // SI EL USUARIO ESTÁ LOGUEADO:
             <>
               {/* Mostramos "Mi Cuenta" solo si NO estamos parados en esa página */}
-              {!isMiCuentaPage && (
-                <>
+      
+              {user?.rol === 'customer' ? (
+          
                 <NavLink to="/micuenta" className="btn-account">
                   <span className="material-icons-round">account_circle</span>
                   Mi Cuenta: {user?.nombre}
                 </NavLink>
-                </>
-              )}
+
+                ) : (
+                  <NavLink to='/admin'  className="btn-account">
+                    <span className="material-icons-round">account_circle</span>
+                    Admin {user?.nombre}
+                  </NavLink>
+                )
+              }
 
               {/* El botón Cerrar Sesión SIEMPRE se mostrará si estás logueado */}
               <button onClick={handleLogout} className="btn-account">
@@ -76,9 +83,9 @@ export function Navbar({ theme, onToggle }: Props) {
               Iniciar Sesión
             </NavLink>
           )}
-        </div>
+        </article>
 
-      </div>
+      </section>
     </nav>
   );
 }

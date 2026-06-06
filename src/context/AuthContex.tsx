@@ -1,8 +1,8 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import type { AuthContextType, responLogin, User } from "./type";
-import { data } from "react-router-dom";
 
-const Url_Base = 'http://localhost:3000';
+
+export const Url_Base = 'http://localhost:3000';
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 

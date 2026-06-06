@@ -2,8 +2,8 @@
 import {  useState } from 'react';
 import './login.css'
 import type React from "react";
-import { useAuth } from '../auth/context/AuthContex';
-import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContex';
+import { NavLink} from 'react-router-dom';
 
 function Login() {
 const [email, setEmail] = useState('');
@@ -11,7 +11,7 @@ const [password, setPassword] = useState('');
 const [error, setError]= useState('');
 
 const {login} = useAuth()
-const navigate = useNavigate();
+
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -22,9 +22,7 @@ const navigate = useNavigate();
       return
     }
     try {
-      await login(email,password)
-      navigate('/micuenta');
-      
+      await login(email,password)  
 
     } catch (error) {
       setError('Credenciales incorrectas o error de conexión')
@@ -47,6 +45,7 @@ const navigate = useNavigate();
           <button type="submit" className="btn-account">
             Iniciar sesión
           </button>
+          <NavLink to={"/crear_user"}>Crear cuenta</NavLink>
         </form>
       </div>
     </section>

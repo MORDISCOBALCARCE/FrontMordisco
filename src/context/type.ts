@@ -3,7 +3,17 @@ export interface User{
     nombre: string,
     apellido: string,
     email: string,
+    password: string,
+    telefono: string,
+    direccion:string,
     rol: string
+}
+
+export type CrearUser = Pick <User, 'nombre'|'apellido'|'email'|'password'|'telefono'>
+
+export interface respCreate{
+    code: number,
+    messagge: string
 }
 
 export interface responLogin{
