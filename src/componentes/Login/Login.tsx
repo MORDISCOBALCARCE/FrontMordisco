@@ -1,39 +1,54 @@
-import { Route, useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+import {  useState } from 'react';
 import './login.css'
 import type React from "react";
+import { useAuth } from '../auth/context/AuthContex';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
-  const navigate = useNavigate();
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
+const [error, setError]= useState('');
 
-    const handleSubmit = (e: React.FormEvent) => {
+const {login} = useAuth()
+const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError('');
 
-    console.log("Login OK:");
-    navigate(-1);
+    if(!email || !password){
+      setError('Por favor, completar todos los campos');
+      return
+    }
+    try {
+      await login(email,password)
+      navigate('/micuenta');
+      
+
+    } catch (error) {
+      setError('Credenciales incorrectas o error de conexión')
+    }
+  
   };
-
 
   return (
     <section className='login-container'>
-      <h2>Página de Login</h2>
+      <div className="login-box">
+        <h2>Iniciar Sesión</h2>
+        <p>{error}</p>
+        <form onSubmit={handleSubmit} className='login-form'>
+          <label >E-mail</label>
+          <input type="email" placeholder="ejemplo@correo.com" value={email} onChange={(e)=> setEmail(e.target.value)}/>
 
-      <form onSubmit={handleSubmit} className='login-form'>
-        <label htmlFor="nombre">Nombre</label>
-        <input type="text" name="nombre" />
+          <label >Contraseña</label>
+          <input type="password"  placeholder="••••••••" value={password} onChange={(e)=>setPassword(e.target.value)}/>
 
-        <label htmlFor="apellido">Apellido</label>
-        <input type="text" name="apellido" />
-
-        <label htmlFor="email">E-mail</label>
-        <input type="email" name="email" />
-
-        <label htmlFor="pass">Contraseña</label>
-        <input type="password" name="pass" />
-
-        <button type="submit">Iniciar sesión</button>
-
-      </form>
-
+          <button type="submit" className="btn-account">
+            Iniciar sesión
+          </button>
+        </form>
+      </div>
     </section>
   );
 }

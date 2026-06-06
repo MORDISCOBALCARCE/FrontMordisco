@@ -1,24 +1,84 @@
-import { NavLink } from "react-router-dom";
-import './navbar.css';
+import { NavLink, useLocation, useNavigate } from "react-router-dom"; // Importamos useLocation
 import logo from "../../assets/img/logo vectorizado.png";
-import {type Props, ThemeToggle } from "./themeToggle";
+import { ThemeToggle } from "./themeToggle";
+import type { Theme } from "../../types/types";
+import "./navbar.css";
+import { useAuth } from "../auth/context/AuthContex";
 
+interface Props {
+  theme: Theme;
+  onToggle: () => void;
+}
 
-function Navbar({theme,onToggle}:Props) {
+export function Navbar({ theme, onToggle }: Props) {
+  // El hook useLocation nos dice en qué ruta estamos parados
+  const location = useLocation();
+  const { token, logout, user} = useAuth();
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    logout();
+    navigate('/')
+  }
+  // Creamos una constante que es true si estamos en la página de Mi Cuenta
+  const isMiCuentaPage = location.pathname === "/micuenta";
+
   return (
-    <nav>
-      <div>
-        <NavLink to="/">
-        <img className="logo" src={logo} alt='logo'/>
-        </NavLink>
+    <nav className="glass-nav">
+      <div className="nav-container">
+
+        <div className="logo-section">
+          <NavLink to="/">
+            <img className="logo-img" src={logo} alt="mordisco" />
+          </NavLink>
         </div>
-        <ThemeToggle theme={theme} onToggle={onToggle} />
-        <div>
-          <NavLink to="/Menu">Menu</NavLink>
-        <NavLink to="/login">Iniciar sesión</NavLink>
+
+        <div className="nav-actions">
+          {/* 1. Botón del tema */}
+          <div className="action-item">
+            <ThemeToggle theme={theme} onToggle={onToggle} />
+          </div>
+
+          {/* 2. Carrito de compras */}
+          <div className="action-item cart-icon-wrapper">
+            <span className="material-icons-round">shopping_cart</span>
+            <span className="cart-badge">2</span>
+          </div>
+
+          {/* 3. El Menú siempre visible */}
+          <NavLink to="/menu" className="btn-account">
+            menu
+          </NavLink>
+
+          {/* 4. LÓGICA DE AUTENTICACIÓN MEJORADA */}
+          {token ? (
+            // SI EL USUARIO ESTÁ LOGUEADO:
+            <>
+              {/* Mostramos "Mi Cuenta" solo si NO estamos parados en esa página */}
+              {!isMiCuentaPage && (
+                <>
+                <NavLink to="/micuenta" className="btn-account">
+                  <span className="material-icons-round">account_circle</span>
+                  Mi Cuenta: {user?.nombre}
+                </NavLink>
+                </>
+              )}
+
+              {/* El botón Cerrar Sesión SIEMPRE se mostrará si estás logueado */}
+              <button onClick={handleLogout} className="btn-account">
+                Cerrar Sesión
+              </button>
+            </>
+          ) : (
+            // SI EL USUARIO NO ESTÁ LOGUEADO:
+            <NavLink to="/login" className="btn-account">
+              <span className="material-icons-round">person</span>
+              Iniciar Sesión
+            </NavLink>
+          )}
+        </div>
+
       </div>
     </nav>
   );
 }
-
-export default Navbar;  
