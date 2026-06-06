@@ -1,6 +1,6 @@
 import { Card } from "./card"
 import { productosMock } from "../../data/productos.data"
-import type { Producto } from "../promociones/promociones.types"
+import type { Producto } from "../../componentes/promociones/promociones.types"
 import { useState } from "react"
 import styles from './menu.module.css'
 
