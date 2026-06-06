@@ -9,9 +9,9 @@ import { CategoNombre } from './componentes/Categorias/CategoNombre/CategoNombre
 import { ContextProvider } from './context/AuthContex';
 import { ProtectedRoute } from './componentes/auth/protectedRoute';
 import { PublicRoute } from './componentes/auth/routesPublic';
-import { MiCuenta } from './page/MiCuenta/MiCuenta';
 import { Crear_user } from './componentes/user/Crear_user';
 import { Administrador } from './page/admin/Administrador';
+import { MiLocal } from './page/local/MiLocal';
 
 function App() {
   const { theme, toggleTheme } = useThemeMode()
@@ -34,7 +34,7 @@ function App() {
 
               <Route element={<ProtectedRoute />}>
                 <Route path="/menu" element={<Menu />} />
-                <Route path='/micuenta' element={<MiCuenta />} />
+                <Route path='/local' element={<MiLocal />} />
                 <Route path='/admin' element={<Administrador />} />
                 <Route path="/categoria/:nombre" element={<CategoNombre />} />
               </Route>

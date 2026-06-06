@@ -1,12 +1,12 @@
 import { useAuth } from "../../context/AuthContex"
 
 
-export function MiCuenta() {
+export function MiLocal() {
     const {user} = useAuth()
     
     return(
         <>
-        <h1>Mi cuenta : {user?.nombre}</h1>
+        <h1>Mi Local : {user?.nombre}</h1>
         </>
        
     )

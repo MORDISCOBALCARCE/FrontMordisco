@@ -56,19 +56,23 @@ export function Navbar({ theme, onToggle }: Props) {
             <>
               {/* Mostramos "Mi Cuenta" solo si NO estamos parados en esa página */}
       
-              {user?.rol === 'customer' ? (
+              {user?.rol === 'local' ? (
           
-                <NavLink to="/micuenta" className="btn-account">
+                <NavLink to="/local" className="btn-account">
                   <span className="material-icons-round">account_circle</span>
-                  Mi Cuenta: {user?.nombre}
+                  Local: {user?.nombre}
                 </NavLink>
 
-                ) : (
+                ) : user?.rol === 'admin' ? (
                   <NavLink to='/admin'  className="btn-account">
                     <span className="material-icons-round">account_circle</span>
                     Admin {user?.nombre}
                   </NavLink>
-                )
+
+                ): user?.rol === 'customer' ?(
+                  <NavLink to='/menu'/>
+                  
+                ) : null
               }
 
               {/* El botón Cerrar Sesión SIEMPRE se mostrará si estás logueado */}
