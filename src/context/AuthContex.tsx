@@ -14,6 +14,8 @@ export function ContextProvider({ children }: props) {
     const [user, setUser] = useState<User>();
     const [token, setToken] = useState<string>();
     const [isLoading, setIsLoading] = useState(true)
+    const [error, setError] = useState<string>('')
+
 
     useEffect(() => {
         const savedToken = window.localStorage.getItem('token');
@@ -37,7 +39,9 @@ export function ContextProvider({ children }: props) {
                 body: JSON.stringify({ email, password})
             });
             if (!resp.ok) {
+                setError('Credenciales incorrectas o el usuario no existe');
                 throw new Error('Credenciales incorrectas');
+                
 
             } else {
                 const data: responLogin = await resp.json()
@@ -46,11 +50,14 @@ export function ContextProvider({ children }: props) {
                 setIsLoading(false)
                 window.localStorage.setItem('token', data.access_token)
                 // console.log(data) //esto trae data del user
+                setError('');
                 return data
             }
 
         } catch (error) {
-            throw error;
+            setError('Credenciales incorrectas o error de conexión');
+           throw error;
+           
         }
         finally {
             setIsLoading(false);
@@ -64,7 +71,7 @@ export function ContextProvider({ children }: props) {
     const isAuthenticate = !!token 
 
     return (
-        <AuthContext.Provider value={{ user, token, login, logout, isLoading, isAuthenticate }}>
+        <AuthContext.Provider value={{ user, token, login, logout, isLoading, isAuthenticate, error }}>
             {children}
         </AuthContext.Provider>
     )
