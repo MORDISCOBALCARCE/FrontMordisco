@@ -30,4 +30,5 @@ export interface AuthContextType{
     login: (email: string, pass: string) => Promise<responLogin>,
     logout: () => void
     isAuthenticate : boolean;
+    error: string
 }

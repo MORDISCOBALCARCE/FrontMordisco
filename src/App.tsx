@@ -26,6 +26,7 @@ function App() {
 
             <Routes>
               <Route path="/" element={<Home />} />
+                <Route path="/categoria/:nombre" element={<CategoNombre />} />
 
               <Route element={<PublicRoute />}>
                 <Route path="/login" element={<Login />} />
@@ -36,7 +37,6 @@ function App() {
                 <Route path="/menu" element={<Menu />} />
                 <Route path='/local' element={<MiLocal />} />
                 <Route path='/admin' element={<Administrador />} />
-                <Route path="/categoria/:nombre" element={<CategoNombre />} />
               </Route>
 
             </Routes>
