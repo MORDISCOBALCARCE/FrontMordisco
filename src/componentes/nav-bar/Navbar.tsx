@@ -1,4 +1,5 @@
-import { NavLink, useNavigate } from "react-router-dom"; // Importamos useLocation
+import { NavLink, useNavigate, useLocation } from "react-router-dom"; // Importamos useLocation
+import { useEffect } from "react";
 import logo from "../../assets/img/logo vectorizado.png";
 import { ThemeToggle } from "./themeToggle";
 import type { Theme } from "../../types/types";
@@ -13,8 +14,14 @@ interface Props {
 export function Navbar({ theme, onToggle }: Props) {
   // El hook useLocation nos dice en qué ruta estamos parados
   // const location = useLocation();
-  const { logout, user, isAuthenticate} = useAuth();
+  const { logout, user, isAuthenticate, clearError } = useAuth();
   const navigate = useNavigate()
+  const location = useLocation(); // Traemos la ubicación actual
+
+  // CADA VEZ QUE LA RUTA CAMBIE, LIMPIAMOS EL ERROR DEL CONTEXTO
+  useEffect(() => {
+    clearError();
+  }, [location.pathname]); 
 
   const handleLogout = () => {
     logout();
