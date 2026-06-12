@@ -31,4 +31,5 @@ export interface AuthContextType{
     logout: () => void
     isAuthenticate : boolean;
     error: string
+    clearError: () => void
 }

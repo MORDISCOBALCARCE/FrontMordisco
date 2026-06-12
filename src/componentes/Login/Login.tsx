@@ -15,17 +15,23 @@ function Login() {
   const [isLoading, setIsLoading] = useState(false);
   
   const mainRef = useRef<HTMLElement>(null);
-  const {login, error} = useAuth()
-  const [errores, setError] = useState(error);
+  // 1. Traemos tanto 'error' como 'clearError' directamente del contexto
+  const {login, error, clearError} = useAuth()
+  // 2. Estado local para renderizar el error en pantalla
+  const [errores, setErrores] = useState(error);
  
+
+
 function resetearErrores() {
-  setError('');
+  setErrores('');
+  clearError();
 }
  
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
+    resetearErrores(); // Limpiamos errores viejos al volver a intentar
     
     if(!email || !password){
       setIsLoading(false);

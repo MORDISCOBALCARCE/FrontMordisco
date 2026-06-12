@@ -68,10 +68,14 @@ export function ContextProvider({ children }: props) {
         window.localStorage.removeItem('token')
     }
 
+    const clearError = () => {
+        setError('');
+    };
+
     const isAuthenticate = !!token 
 
     return (
-        <AuthContext.Provider value={{ user, token, login, logout, isLoading, isAuthenticate, error }}>
+        <AuthContext.Provider value={{ user, token, login, logout, isLoading, isAuthenticate, error, clearError }}>
             {children}
         </AuthContext.Provider>
     )
