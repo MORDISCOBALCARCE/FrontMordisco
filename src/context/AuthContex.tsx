@@ -88,3 +88,53 @@ export function useAuth() {
     return context
 }
 
+
+//Funciones para recuperar la contraseña de usuario.
+//Olvidó la clave
+export async function forgotPassword(email: string) {
+  const response = await fetch(`${Url_Base}/auth/forgot-password`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ email })
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || "Error");
+  }
+
+  return data;
+}
+
+
+
+//REsetear la clave
+export async function resetPassword(
+  token: string,
+  code: string,
+  password: string
+) 
+{
+  const response = await fetch(`${Url_Base}/auth/reset-password`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      token,
+      code,
+      password
+    })
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || "Error");
+  }
+
+  return data;
+}
