@@ -5,6 +5,7 @@ import type React from "react";
 import { useAuth } from '../../context/AuthContex';
 import { NavLink } from 'react-router-dom';
 //import { NavLink, useNavigate} from 'react-router-dom';
+import { PasswordRecoveryModal } from './passwordREcoveryModal';
 
 
 
@@ -13,6 +14,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showRecoveryModal, setShowRecoveryModal] = useState(false);
   
   const mainRef = useRef<HTMLElement>(null);
   // 1. Traemos tanto 'error' como 'clearError' directamente del contexto
@@ -163,9 +165,13 @@ function resetearErrores() {
 
           {/* Footer Links */}
           <div className="mt-(--p-mt-xl) flex flex-col items-center gap-(--p-md)">
-            <a className="text-[14px] font-semibold text-(--primary) hover:text-(--primary-container) transition-colors underline-offset-4 hover:underline" href="#">
-              ¿Olvidaste tu contraseña?
-            </a>
+           <button
+            type="button"
+            className="text-[14px] font-semibold text-(--primary) hover:text-(--primary-container) transition-colors underline-offset-4 hover:underline"
+            onClick={() => setShowRecoveryModal(true)}
+          >
+            ¿Olvidaste tu contraseña?
+          </button>
             <NavLink to={"/crear_user"}>Crear cuenta</NavLink>
             
           </div>
@@ -173,6 +179,10 @@ function resetearErrores() {
 
        
       </main>
+      <PasswordRecoveryModal
+  isOpen={showRecoveryModal}
+  onClose={() => setShowRecoveryModal(false)}
+/>
     </div>
   );
 }
