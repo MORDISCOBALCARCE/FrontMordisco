@@ -15,6 +15,7 @@ export function PasswordRecoveryModal({isOpen, onClose}: Props) {
 
   const [token, setToken] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
 
   if (!isOpen) return null;
@@ -54,15 +55,19 @@ export function PasswordRecoveryModal({isOpen, onClose}: Props) {
     try {
       await resetPassword(token, code, password);
 
-      alert("Contraseña actualizada");
+      //alert("Contraseña actualizada");
+      setSuccess("Contraseña actualizada correctamente");
 
+    setTimeout(() => {
       setStep(1);
       setEmail("");
       setCode("");
       setPassword("");
       setToken("");
-
+      setSuccess("");
       onClose();
+    }, 3000);
+
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -102,11 +107,26 @@ export function PasswordRecoveryModal({isOpen, onClose}: Props) {
             {error}
           </div>
         )}
+       {success && (
+     
+        <div className="text-center py-6">
+            <div className="text-5xl mb-4">✓</div>
+
+            <h2 className="text-[24px] font-bold text-green-600 mb-3">
+            Contraseña actualizada
+            </h2>
+
+            <p className="text-(--on-surface-variant) mb-6">
+            Ya podés iniciar sesión con tu nueva contraseña.
+            </p>
+
+        </div>
+        )}
 
         {step === 1 && (
           <>
             <p className="mb-4 text-(--on-surface-variant)">
-              Ingresá tu email para recibir un código.
+              Ingresá tu email para recibir un código.<span className="text-red-500">*</span>
             </p>
 
             <input
