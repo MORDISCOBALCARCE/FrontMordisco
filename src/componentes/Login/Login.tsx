@@ -4,8 +4,9 @@ import './login.css'
 import type React from "react";
 import { useAuth } from '../../context/AuthContex';
 import { NavLink } from 'react-router-dom';
+import { PassRecoveryModal } from './passwordREcoveryModal';
 //import { NavLink, useNavigate} from 'react-router-dom';
-import { PasswordRecoveryModal } from './passwordREcoveryModal';
+
 
 
 
@@ -100,7 +101,7 @@ function resetearErrores() {
                   id="username" 
                   name="username" 
                   placeholder="Ingresá tu email" 
-                  type="text"
+                  type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={isLoading}
@@ -179,7 +180,7 @@ function resetearErrores() {
 
        
       </main>
-      <PasswordRecoveryModal
+      <PassRecoveryModal
   isOpen={showRecoveryModal}
   onClose={() => setShowRecoveryModal(false)}
 />

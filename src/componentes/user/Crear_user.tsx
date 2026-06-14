@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { enviarDatos } from "./service";
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import type React from "react";
 
 export function Crear_user() {

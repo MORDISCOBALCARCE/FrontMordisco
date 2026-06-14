@@ -6,7 +6,7 @@ interface Props {
   onClose: () => void;
 }
 
-export function PasswordRecoveryModal({isOpen, onClose}: Props) {
+export function PassRecoveryModal({isOpen, onClose}: Props) {
   const [step, setStep] = useState(1);
 
   const [email, setEmail] = useState("");
