@@ -1,0 +1,10 @@
+.cont-card{
+    border: solid wheat;
+    width: 300px;
+    padding: 10px;
+}
+
+.cont-user{
+    display: flex;
+    gap: 20px;
+}

@@ -4,6 +4,7 @@ export function useApi(){
     const {token, logout} = useAuth();
    
     const fetchAuth = async (url: string, options = {})=>{
+        
         const headers = {
             'Content-Type' : 'application/json',
             Authorization : `Bearer ${token}`,
