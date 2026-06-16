@@ -5,8 +5,9 @@ import Promociones from "../../componentes/promociones/promociones";
 import type { Producto } from "../../componentes/promociones/promociones.types";
 import { productosMock } from "../../data/productos.data";
 import { useState } from "react";
-import { Card } from "../menu/card";
+
 import styles from './home.module.css'
+import { Card2 } from "./Card2";
 
 export default function Home() {
     const [producto] = useState<Producto[]>(productosMock);
@@ -28,7 +29,7 @@ export default function Home() {
             <SearchProducts onSearch={handleSearch} />
             
             <section className={styles.cont_card_home}>
-                {filtProducto.map((prod: Producto) => (<Card key={prod.id} producto={prod} />))}
+                {filtProducto.map((prod: Producto) => (<Card2 key={prod.id} producto={prod} />))}
             </section>
 
             <Categorias
