@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react"
+
 import { useAuth } from "../../context/AuthContex"
 import { FormProductPost } from "../../componentes/formularioProductos/FormProductPost";
 

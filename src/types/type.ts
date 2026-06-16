@@ -46,12 +46,14 @@ export type FetchState<T> =
     |{status: 'error'}
 
     export interface Productos{
-        // id: number,
+        id: number,
         nombre: string,
         precio: number,
         descripcion: string,
         imagen: File | null,
-        // categoria? : number,
-        // local_id? : number,
+        categoria? : {
+            nombre:string
+        },
+        local_id? : number,
 
     }
