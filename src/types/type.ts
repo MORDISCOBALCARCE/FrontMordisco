@@ -46,7 +46,7 @@ export type FetchState<T> =
     |{status: 'error'}
 
     export interface Productos{
-        id: number,
+        id_producto: number,
         nombre: string,
         precio: number,
         descripcion: string,

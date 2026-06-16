@@ -11,7 +11,7 @@ export function FormProductPost() {
     const [imagenFile, setImagenFile] = useState<File | null>(null)
     const [mensaje, setMensaje] = useState('');
     const{fetchAuth2} = useApiForm()
-    // const[categoria, setCategoria] = useState<number>()
+    const[categoria, setCategoria] = useState<number>()
 
 
 
@@ -22,6 +22,7 @@ export function FormProductPost() {
         newProduct.append('nombre', nombre)
         newProduct.append('precio', precio!.toString())
         newProduct.append('descripcion', descripcion)
+        newProduct.append('categoria_id', categoria!.toString())
 
         if(imagenFile){
             newProduct.append('imagen', imagenFile)
@@ -29,17 +30,17 @@ export function FormProductPost() {
         
         try {
             const resp = await postProductos(newProduct, fetchAuth2)
+              console.log("POST PRODUCTO EJECUTADO");
             if (resp.code === 201) {
-                setMensaje(resp.message || '¡Producto creado con éxito!');
+                alert('¡Producto creado con éxito!');
             }
-        } catch (error) {
-       
-            setMensaje('Error al intentar guardar el producto.');
-        }
-        setDescripcion('')
-        setNombre('')
-        setPrecio(undefined)
-        setImagenFile(null)
+            } catch (error) {
+                setMensaje('Error al intentar guardar el producto.');
+            }
+            setDescripcion('')
+            setImagenFile(null)
+            setPrecio(undefined)
+            setNombre('')
     }
 
 
@@ -51,7 +52,7 @@ export function FormProductPost() {
                 <input type="text" placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
                 <input type="number" placeholder="Precio" value={precio || ''} onChange={(e) => setPrecio(Number(e.target.value))} required />
                 <textarea placeholder="Descripción" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} required />
-                {/* <input type="number" placeholder="ID Categoría" value={categoria} onChange={(e) => setCategoria(Number(e.target.value))} required /> */}
+                <input type="number" placeholder="Categoría" value={categoria || ''} onChange={(e) => setCategoria(Number(e.target.value))} required />
 
                 <label style={{ fontWeight: 'bold' }}>Imagen del Producto:</label>
                 <input

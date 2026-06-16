@@ -57,7 +57,7 @@ export default function Menu() {
                         <h2 className="text-2xl font-extrabold mb-6 text-accent-brown dark:text-orange-100 uppercase tracking-wider">Menú</h2>
                         
                         <div className={styles.cont_card_menu}>
-                            {filtcategoria.map((prod: Productos) => (<Card key={prod.id} producto={prod} />))}
+                            {filtcategoria.map((prod: Productos) => (<Card key={prod.id_producto} producto={prod} />))}
                         </div>
                     </div>
                 </div>
