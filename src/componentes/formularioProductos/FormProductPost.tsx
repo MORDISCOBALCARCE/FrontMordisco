@@ -26,16 +26,20 @@ export function FormProductPost() {
         if(imagenFile){
             newProduct.append('imagen', imagenFile)
         }
-
+        
         try {
             const resp = await postProductos(newProduct, fetchAuth2)
             if (resp.code === 201) {
                 setMensaje(resp.message || '¡Producto creado con éxito!');
             }
         } catch (error) {
-            console.error(error);
+       
             setMensaje('Error al intentar guardar el producto.');
         }
+        setDescripcion('')
+        setNombre('')
+        setPrecio(undefined)
+        setImagenFile(null)
     }
 
 
@@ -44,7 +48,6 @@ export function FormProductPost() {
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '350px' }}>
                 <h3>Formulario de Productos</h3>
-                {mensaje}
                 <input type="text" placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
                 <input type="number" placeholder="Precio" value={precio || ''} onChange={(e) => setPrecio(Number(e.target.value))} required />
                 <textarea placeholder="Descripción" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} required />
