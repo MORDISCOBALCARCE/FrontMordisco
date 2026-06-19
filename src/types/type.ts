@@ -1,7 +1,7 @@
 export type Theme = 'light' | 'dark'
 
 export interface User{
-    id: number,
+    id_usuario: number,
     nombre: string,
     apellido: string,
     email: string,
@@ -9,6 +9,7 @@ export interface User{
     telefono: string,
     direccion:string,
     rol: string
+    activo: boolean;
 }
 
 export type CrearUser = Pick <User, 'nombre'|'apellido'|'email'|'password'|'telefono'>
