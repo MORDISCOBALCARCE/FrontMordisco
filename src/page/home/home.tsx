@@ -1,39 +1,54 @@
-import { SearchProducts } from "../../componentes/BuscarProducto/BuscarProducto";
+import { BuscarProductos} from "../../componentes/BuscarProducto/BuscarProducto";
 import { Categorias } from "../../componentes/Categorias/Categorias";
 import { categoriasMock } from "../../data/Categorias.data";
 import Promociones from "../../componentes/promociones/promociones";
-import type { Producto } from "../../componentes/promociones/promociones.types";
-import { productosMock } from "../../data/productos.data";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 import styles from './home.module.css'
-import { Card2 } from "./Card2";
+import { useProductos } from "../../hooks/useProductos";
+import type { Productos } from "../../types/type";
+import { Card } from "../menu/card";
+
 
 export default function Home() {
-    const [producto] = useState<Producto[]>(productosMock);
-    const [filtProducto, setFiltProducto] = useState<Producto[]>([])
+    const { state } = useProductos();
+    const [filter, setFilter] = useState<Productos[]>([]);
+
+
+    useEffect(() => { setFilter([]) }, [state])
+
+    if (state.status === 'idle' || state.status === 'loading') {
+        return <p>Cargando productos...</p>
+    }
+    if (state.status === 'error') {
+        return <p>Error al cargar los productos: {state.status}</p>
+    }
+
 
 
     const handleSearch = (buscar: string) => {
-       if(buscar != ""){
-           const resultBusquedo = producto.filter((prod: Producto) => prod.titulo.toLowerCase().trim().includes(buscar.toLowerCase().trim()));
-           setFiltProducto(resultBusquedo)
-       } 
-
+        if (buscar.trim() === '') {
+            return
+        }
+        const prodFilter = state.data.data.filter((p) => (p.nombre.toLowerCase().trim().includes(buscar.toLowerCase())))
+        setFilter(prodFilter)
     };
 
 
     return (
         <>
             <Promociones />
-            <SearchProducts onSearch={handleSearch} />
-            
+            <BuscarProductos onSearch={handleSearch} />
+
             <section className={styles.cont_card_home}>
-                {filtProducto.map((prod: Producto) => (<Card2 key={prod.id} producto={prod} />))}
+                <div className={styles.cont_prod}>
+
+                    {filter.map((prod: Productos) => (
+                        <Card key={prod.id_producto} producto={prod} />))
+                    }
+                </div>
             </section>
 
-            <Categorias
-                categorias={categoriasMock}/>
+            <Categorias categorias={categoriasMock} />
         </>
     )
 }

@@ -1,15 +1,15 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from "./componentes/nav-bar/Navbar";
-import Login from "./componentes/Login/Login";
+import Login from "./features/Login/Login";
 import Footer from "./componentes/Footer/Footer";
 import Home from "./page/home/home";
 import { useThemeMode } from './hooks/useThemeMode';
 import Menu from './page/menu/menu';
-import { CategoNombre } from './componentes/Categorias/CategoNombre/CategoNombre';
+import { CategoFiltro } from './componentes/Categorias/CategoriaFiltro/CategoFiltro';
 import { ContextProvider } from './context/AuthContex';
-import { ProtectedRoute } from './componentes/auth/protectedRoute';
-import { PublicRoute } from './componentes/auth/routesPublic';
-import { Crear_user } from './componentes/user/Crear_user';
+import { ProtectedRoute } from './features/auth/protectedRoute';
+import { PublicRoute } from './features/auth/routesPublic';
+import { Crear_user } from './features/user/Crear_user';
 import { Administrador } from './page/admin/Administrador';
 import { MiLocal } from './page/local/MiLocal';
 
@@ -26,7 +26,7 @@ function App() {
 
             <Routes>
               <Route path="/" element={<Home />} />
-                <Route path="/categoria/:nombre" element={<CategoNombre />} />
+                <Route path="/categoria/:nombre" element={<CategoFiltro />} />
 
               <Route element={<PublicRoute />}>
                 <Route path="/login" element={<Login />} />

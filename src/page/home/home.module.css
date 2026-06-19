@@ -1,8 +1,14 @@
 .cont_card_home{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    margin-bottom:3%;
+    width: 100%;
+    max-width: 1200px; /* O el tamaño máximo que quieras para tu contenedor */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.cont_prod {
+   display: grid;
+    /* Crea columnas automáticas de mínimo 280px y máximo igual de ancho entre todas */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 24px; /* Espaciado uniforme entre tarjetas */
+    width: 100%;
 }
