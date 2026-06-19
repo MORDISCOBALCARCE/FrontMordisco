@@ -1,5 +1,5 @@
 import { useNavigate} from "react-router-dom";
-import { type Categoria } from "./Categorias.types";
+import type { Categoria } from "./Categorias.types";
 
 
 type CategoriasProps = {

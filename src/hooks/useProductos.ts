@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {  type FetchState, type Productos, type respGet } from "../types/type";
 import { getDataPro } from "../servicio/service";
 
+
 export function useProductos(){
     const[state, setState] = useState<FetchState<respGet<Productos>>>({status:'idle'})
 
@@ -19,7 +20,7 @@ export function useProductos(){
                     if (error instanceof Error && error.name === 'AbortError') {
                     return;
                 }
-                setState({ status: 'error' })
+                setState({ status: 'error', error: 'No se pudieron encontrar productos'})
                 return;
             }
         }

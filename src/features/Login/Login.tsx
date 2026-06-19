@@ -4,7 +4,8 @@ import './login.css'
 import type React from "react";
 import { useAuth } from '../../context/AuthContex';
 import { NavLink } from 'react-router-dom';
-import { PassRecoveryModal } from './passwordREcoveryModal';
+import { PassRecoveryModal } from './passwordRecoveryModal';
+
 //import { NavLink, useNavigate} from 'react-router-dom';
 
 
