@@ -15,7 +15,7 @@ export function PublicRoute() {
             return <Navigate to='/admin' replace />
         }
         if(user?.rol === 'customer'){
-            return <Navigate to='/menu'/>
+            return <Navigate to='/menu' replace/>
         }
         
     } else {

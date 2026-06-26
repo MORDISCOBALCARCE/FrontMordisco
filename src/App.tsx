@@ -12,6 +12,8 @@ import { PublicRoute } from './features/auth/routesPublic';
 import { Crear_user } from './features/user/Crear_user';
 import { Administrador } from './page/admin/Administrador';
 import { MiLocal } from './page/local/MiLocal';
+import { FormProductPost } from './componentes/formularioProductos/FormProductPost';
+import { ProductList } from './page/local/ProductList';
 
 function App() {
   const { theme, toggleTheme } = useThemeMode()
@@ -35,8 +37,12 @@ function App() {
 
               <Route element={<ProtectedRoute />}>
                 <Route path="/menu" element={<Menu />} />
-                <Route path='/local' element={<MiLocal />} />
                 <Route path='/admin' element={<Administrador />} />
+
+                <Route path='/local' element={<MiLocal />}>
+                <Route index element={<ProductList/>} />
+                <Route path='nuevoProducto' element={<FormProductPost/>} />
+                </Route>
               </Route>
 
             </Routes>

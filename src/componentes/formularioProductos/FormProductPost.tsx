@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react"
 import { postProductos } from "../../servicio/service"
 import { useApiForm } from "../../hooks/useFormDataApi"
-
+import styles from './styles.module.css';
 
 
 export function FormProductPost() {
@@ -9,9 +9,9 @@ export function FormProductPost() {
     const [descripcion, setDescripcion] = useState('')
     const [precio, setPrecio] = useState<number>()
     const [imagenFile, setImagenFile] = useState<File | null>(null)
-    const [mensaje, setMensaje] = useState('');
-    const{fetchAuth2} = useApiForm()
-    const[categoria, setCategoria] = useState<number>()
+    const [error, setError] = useState('');
+    const { fetchAuth2 } = useApiForm()
+    const [categoria, setCategoria] = useState<number>()
 
 
 
@@ -24,38 +24,42 @@ export function FormProductPost() {
         newProduct.append('descripcion', descripcion)
         newProduct.append('categoria_id', categoria!.toString())
 
-        if(imagenFile){
+        if (imagenFile) {
             newProduct.append('imagen', imagenFile)
         }
-        
+
         try {
             const resp = await postProductos(newProduct, fetchAuth2)
-              console.log("POST PRODUCTO EJECUTADO");
             if (resp.code === 201) {
                 alert('¡Producto creado con éxito!');
             }
-            } catch (error) {
-                setMensaje('Error al intentar guardar el producto.');
-            }
-            setDescripcion('')
-            setImagenFile(null)
-            setPrecio(undefined)
-            setNombre('')
+        } catch (error) {
+            setError('Error al intentar guardar el producto.');
+        }
+        setDescripcion('')
+        setImagenFile(null)
+        setPrecio(undefined)
+        setNombre('')
     }
 
 
     return (
         <>
 
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '350px' }}>
-                <h3>Formulario de Productos</h3>
+        {error && (
+            <p>{error}</p>
+        )}
+            <form onSubmit={handleSubmit} className={styles.cont_form}>
+                <h2>Agregar producto</h2>
+
                 <input type="text" placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
                 <input type="number" placeholder="Precio" value={precio || ''} onChange={(e) => setPrecio(Number(e.target.value))} required />
-                <textarea placeholder="Descripción" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} required />
+                <label >Descripcion</label>
+                <textarea value={descripcion} onChange={(e) => setDescripcion(e.target.value)} required className={styles.inputText} />
                 <input type="number" placeholder="Categoría" value={categoria || ''} onChange={(e) => setCategoria(Number(e.target.value))} required />
 
-                <label style={{ fontWeight: 'bold' }}>Imagen del Producto:</label>
-                <input
+                <label >Imagen del Producto</label>
+                <input className={styles.selec_img}
                     type="file"
                     accept="image/*"
                     onChange={(e) => {
@@ -65,9 +69,11 @@ export function FormProductPost() {
                     }}
                     required
                 />
-
-                <button type="submit">Guardar Producto</button>
+                <div className={styles.btn}>
+                    <button type="submit">Guardar Producto</button>
+                </div>
             </form>
+
 
         </>
 

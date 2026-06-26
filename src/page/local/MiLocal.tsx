@@ -1,16 +1,36 @@
 
+import { Outlet } from "react-router-dom";
 import { useAuth } from "../../context/AuthContex"
-import { FormProductPost } from "../../componentes/formularioProductos/FormProductPost";
-
+import { Panel_control_local } from "./panel-control/Panel_control_local";
 
 export function MiLocal() {
   const { user } = useAuth();
 
   return (
     <>
-      <h1>Mi Local : {user?.nombre}</h1>
+      <header className="mb-6">
+        <h1 className="text-lg font-black">
+          Bienvenido:
+          <span className="ml-2 text-xs text-(--on-surface-variant)">
+            {user?.nombre}
+          </span>
+        </h1>
 
-    <FormProductPost />
+        <h2 className="mt-2 text-2xl font-bold">
+          Nuestros Productos
+        </h2>
+      </header>
+
+      <section className="flex gap-6 items-start">
+        <aside className="w-72 shrink-0">
+          <Panel_control_local />
+        </aside>
+
+        <article className="flex-1 min-w-0">
+          <Outlet />
+        </article>
+      </section>
+
 
     </>
 
