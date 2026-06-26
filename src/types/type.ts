@@ -60,6 +60,7 @@ export type FetchState<T> =
     export interface Productos{
         id_producto: number,
         nombre: string,
+        activo: boolean,
         precio: number,
         descripcion: string,
         imagen: File | null,

@@ -1,8 +1,8 @@
+
 import { useAuth } from "../context/AuthContex";
 
 export function useApiForm(){
     const {token, logout} = useAuth();
-
     const fetchAuth2 = async (url: string, formData: FormData) => {
 
         const resp = await fetch(url,{
