@@ -12,6 +12,17 @@ export interface User{
     activo: boolean;
 }
 
+export interface Local{
+    id_local:number,
+    nombre_comercial: string,
+    tipoLocal: string,
+    activo: boolean,
+    direccion: string,
+    horario_apertura: string,
+    horario_cierre: string,
+    description:string;
+}
+
 export type CrearUser = Pick <User, 'nombre'|'apellido'|'email'|'password'|'telefono'>
 
 export interface respCreate{
