@@ -17,10 +17,10 @@ export default function Home() {
     useEffect(() => { setFilter([]) }, [state])
 
     if (state.status === 'idle' || state.status === 'loading') {
-        return <p>Cargando productos...</p>
+        return <p>Cargando...</p>
     }
     if (state.status === 'error') {
-        return <p>Error al cargar los productos: {state.status}</p>
+        return <p>Error al cargar la pagina: {state.error}</p>
     }
 
 

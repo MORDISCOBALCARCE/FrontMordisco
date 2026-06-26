@@ -1,6 +1,6 @@
 import type { Productos } from "../../types/type"
 
-const url_imagen = "http://localhost:3000/uploads/"
+export const url_imagen = "http://localhost:3000/uploads/"
 
 interface Props {
     producto: Productos

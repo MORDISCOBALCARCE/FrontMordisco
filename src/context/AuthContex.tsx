@@ -17,16 +17,19 @@ export function ContextProvider({ children }: props) {
     const [error, setError] = useState<string>('')
 
 
+
     useEffect(() => {
         const savedToken = window.localStorage.getItem('token');
-        // const savedUser = window.localStorage.getItem('user');
+        const savedUser = window.localStorage.getItem('user');
 
         if (savedToken) {
             setToken(savedToken)
         }
-
+        if(savedUser){
+            setUser(JSON.parse(savedUser))
+        }
         setIsLoading(false)
-    }, [])
+    }, [token])
 
     const login = async (email: string, password: string) => {
         try {
@@ -39,7 +42,6 @@ export function ContextProvider({ children }: props) {
                 body: JSON.stringify({ email, password})
             });
             if (!resp.ok) {
-                setError('Credenciales incorrectas o el usuario no existe');
                 throw new Error('Credenciales incorrectas');
                 
 
@@ -49,7 +51,7 @@ export function ContextProvider({ children }: props) {
                 setUser(data.user)
                 setIsLoading(false)
                 window.localStorage.setItem('token', data.access_token)
-                // console.log(data) //esto trae data del user
+                window.localStorage.setItem('user',JSON.stringify(data.user))
                 setError('');
                 return data
             }
@@ -63,9 +65,12 @@ export function ContextProvider({ children }: props) {
             setIsLoading(false);
         }
     }
+
     const logout = () => {
         setToken(undefined);
+        setUser(undefined)
         window.localStorage.removeItem('token')
+        window.localStorage.removeItem('user')
     }
 
     const clearError = () => {

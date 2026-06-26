@@ -9,13 +9,13 @@ export function Crear_user() {
   const [email, setEmail] = useState('');
   const [telefono, setTelefono] = useState('');
   const [password, setPassword] = useState('');
-  const [mensage, setMensage] = useState('');
+  const [mensaje, setMensaje] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
   function resetearErrores() {
-    setMensage('');
+    setMensaje('');
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -24,7 +24,7 @@ export function Crear_user() {
 
     if (!nombre || !apellido || !email || !password || !telefono) {
       setIsLoading(false);
-      setMensage('Por favor, completa todos los campos');
+      setMensaje('Por favor, completa todos los campos');
       return;
     }
 
@@ -35,7 +35,7 @@ export function Crear_user() {
       navigate('/login');
     } catch (error) {
       console.error(error);
-      setMensage('Hubo un error al registrar el usuario');
+      setMensaje('Hubo un error al registrar el usuario');
     } finally {
       setIsLoading(false);
     }
@@ -59,9 +59,9 @@ export function Crear_user() {
             <h1 className="text-[24px] font-bold leading-8 text-(--on-surface) text-center">Crear Cuenta</h1>
             
             {/* CONTENEDOR DEL ERROR */}
-            {mensage && (
+            {mensaje && (
               <div className="mt-4 w-full flex items-center gap-2 p-3 rounded-default bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 text-[14px] transition-all duration-300">
-                <p className="font-medium leading-tight text-left">{mensage}</p>
+                <p className="font-medium leading-tight text-left">{mensaje}</p>
               </div>
             )}
           </div>

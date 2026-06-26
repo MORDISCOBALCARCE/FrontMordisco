@@ -1,12 +1,13 @@
+
 import { useAuth } from '../context/AuthContex';
 
 export function useApi(){
     const { token, logout } = useAuth();
-    
+
     const fetchAuth = async (url: string, options: RequestInit = {}) => {
         const headers = {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
+            Authorization : `Bearer ${token}`,
             ...options.headers, // Fusiona headers correctamente si es que vienen en options
         };
 
