@@ -1,30 +1,30 @@
 import { useEffect, useState } from "react";
-import type { FetchState, respGet, User } from "../../../types/type";
-import { getUser } from "../../../servicio/service";
+import type { FetchState, Local, respGet } from "../../../types/type";
+import { getLocal } from "../../../servicio/service";
 import { useApi } from "../../../hooks/useApi";
 
-export function useUsuarios() {
-    const [state, setState] = useState<FetchState<respGet<User>>>({ status: 'idle' })
+export function useLocales() {
+    const [state, setState] = useState<FetchState<respGet<Local>>>({ status: 'idle' })
     const { fetchAuth } = useApi();
 
     useEffect(() => {
         const controller = new AbortController();
         setState({ status: 'loading' });
 
-        const todosUsuarios = async () => {
+        const todosLocales = async () => {
 
             try {
-                const resp = await getUser(fetchAuth, controller);
+                const resp = await getLocal(fetchAuth, controller);
                 setState({ status: 'success', data: resp })
 
             } catch (error) {
                 if (error instanceof Error && error.name === 'AbortError') {
                     return;
                 }
-                setState({ status: 'error', error: 'Error al cargar usuarios' })
+                setState({ status: 'error', error: 'Error al cargar locales' })
             }
         }
-        todosUsuarios()
+        todosLocales()
         return () => { controller.abort() }
 
     }, [])

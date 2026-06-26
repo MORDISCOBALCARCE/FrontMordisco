@@ -11,7 +11,9 @@
   --background: #fef9ec;
 
   /* Brand */
-  --primary: #a93200;
+  --primary: #F15A24;
+  
+  /*--primary: #a93200;*/
   --primary-hover: #922900;
   --primary-container: #d1430a;
   --secondary-container: #fed4c5;
@@ -140,4 +142,32 @@ body {
 .cont-user{
     display: flex;
     gap: 20px;
+}
+
+@media (max-width: 768px) {
+  table,
+  tbody,
+  tr,
+  td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 12px;
+    padding: 8px;
+    border: 1px solid var(--outline);
+    border-radius: 12px;
+  }
+
+  td {
+    padding: 8px 12px !important;
+    text-align: left !important;
+    word-break: break-word;
+  }
 }
