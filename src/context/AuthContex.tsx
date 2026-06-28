@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-import type { AuthContextType, Payload, responLogin, User } from "./type";
+import type { AuthContextType, Payload, responLogin } from "./type";
 
 
 export const Url_Base = 'http://localhost:3000';
