@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import type { CarritoContextType, ItemCarrito } from "./typeCarrito";
 import type { Productos } from "../../types/type";
+import { useAuth } from "../AuthContex";
 
 
 const CarritoContext = createContext<CarritoContextType | undefined>(undefined);
@@ -10,15 +11,33 @@ interface props {
 }
 
 export const CarritoProvider = ({ children }: props) => {
-    const [carrito, setCarrito] = useState<ItemCarrito[]>(() => {
+    const {user} = useAuth();
 
-        const data = localStorage.getItem('carrito');
-        return data ? JSON.parse(data) : []
-    });
+    // Definimos una clave dinámica basada en el ID del usuario[cite: 2]
+    const localStorageKey = user ? `carrito_user_${user.id}` : null;
 
+    // Inicializamos el carrito vacío. Ahora la carga se manejará en un useEffect 
+    // para reaccionar correctamente cada vez que cambie el usuario.
+    const [carrito, setCarrito] = useState<ItemCarrito[]>([]);
+
+    // Efecto 1: Cargar el carrito del localStorage cuando el usuario cambie (Login / Logout)[cite: 1]
     useEffect(() => {
-        localStorage.setItem("carrito", JSON.stringify(carrito));
-    }, [carrito]);
+        if (localStorageKey) {
+            const data = localStorage.getItem(localStorageKey);
+            setCarrito(data ? JSON.parse(data) : []);
+        } else {
+            // Si no hay usuario logueado, vaciamos el estado en memoria
+            setCarrito([]);
+        }
+    }, [localStorageKey]); // Se ejecuta cada vez que el usuario cambia o se desloguea[cite: 1]
+
+
+    // Efecto 2: Guardar en localStorage solo si el usuario está logueado y el carrito cambia[cite: 4]
+    useEffect(() => {
+        if (localStorageKey) {
+            localStorage.setItem(localStorageKey, JSON.stringify(carrito));
+        }
+    }, [carrito, localStorageKey]);
 
 
     const agregarAlCarrito = (producto: Productos, cantidad = 1, observaciones?: string) => {
