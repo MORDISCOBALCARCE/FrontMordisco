@@ -1,0 +1,66 @@
+.cont_form {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f98b4b42;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    font-family: system-ui, -apple-system, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    /* Espaciado automático entre elementos */
+    border: outset;
+
+    & h2 {
+        margin: 0 0 0.5rem 0;
+        color: #1a202c;
+        font-size: 1.6rem;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    & input {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0.8rem 1rem;
+        font-size: 0.95rem;
+        border: 1px solid #1e242b;
+        border-radius: 8px;
+        background-color: #f9ad6295;
+        color: #334155;
+        transition: all 0.25s ease;
+        outline: none;
+        box-sizing: border-box;
+    }
+
+    & label {
+        color: black;
+    }
+
+}
+
+.inputText {
+    border: 1px solid #1e242b;
+    background-color: #f9ad629f;
+}
+
+.selec_img:hover, button{
+    cursor: pointer;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+    background-color: #865728;
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+    border: outset;
+
+}
+
+.art_conte{
+    display: flex;
+}

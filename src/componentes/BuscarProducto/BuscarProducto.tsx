@@ -1,14 +1,15 @@
 import { useState } from "react";
 
-type SearchProps = {
+type Props = {
     onSearch: (buscar: string) => void;
 };
 
-export function SearchProducts({ onSearch }: SearchProps) {
+export function BuscarProductos({ onSearch }: Props) {
     const [buscar, setBuscar] = useState<string>('');
 
-    const handleSearch = () => {
-        onSearch(buscar);
+    const handleSearch =  () => {
+         onSearch(buscar);
+        console.log(buscar)
         setBuscar('');
     };
 

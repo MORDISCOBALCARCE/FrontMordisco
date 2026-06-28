@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+:root {
+  /* Fuentes */
+  font-family: 'Plus Jakarta Sans', sans-serif;
+
+  /* Colores personalizados del script */
+   --color-background-light: #fef0ec; 
+   --color-background-dark: #1A1513;
+  --background: #FEF9EC;
+  --primary: #a93200;
+  --primary-container: #d1430a;
+  --secondary-container: #fed4c5;
+  --surface-container-low: #fff1ec;
+  --surface-container-lowest: #ffffff;
+  --outline-variant: #e2bfb4;
+  --on-surface: #251914;
+  --on-surface-variant: #5a4139;
+  --on-primary-container: #fffbff;
+
+  /* Spacing / Margenes personalizados */
+  --p-lg: 40px;
+  --p-xl: 64px;
+  --p-md: 20px;
+  --p-sm: 12px;
+  --p-xs: 4px;
+  --p-margin-mobile: 16px;
+  --p-mb-xl: 30px;
+  --p-mb-md: 24px;
+  --p-mt-xs: 4px;
+  --p-mt-xl: 64px;
+  --p-mt-md: 24px;
+  --p-mt-lg: 40px;
+}
+
+
+body {
+  background-color: var(--background);
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.squishy-btn:active {
+  transform: scale(0.96);
+}
+
+.glass-depth {
+  box-shadow: 0 20px 40px rgba(74, 48, 38, 0.08);
+}
+
+.dark {
+  --background: #19110e;                 /* Fondo oscuro café/negro */
+  --primary: #ffb59e;                    /* Naranja más brillante para contraste */
+  --primary-container: #ffdbd0;
+  --secondary-container: #3b2d28;
+  --surface-container-low: #351c11;      /* Fondo de la tarjeta en modo oscuro */
+  --surface-container-lowest: #2c160d;   /* Fondo de los inputs en modo oscuro */
+  --outline-variant: #5a4139;            /* Bordes más oscuros */
+  --on-surface: #ffede7;                 /* Texto principal blanco/crema */
+  --on-surface-variant: #e2bfb4;         /* Texto secundario claro */
+  --on-primary-container: #251914;
+}
+
+
+.login-container {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+  color: #57382e;
+}
+
+.login-form {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  background: #57382e;
+  padding: 25px;
+  border-radius: 12px;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+.login-form input {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.2s ease;
+  font-size: 14px;
+}
+
+.login-form input:focus {
+  border-color: #d44e00;
+  box-shadow: 0 0 0 3px rgba(212, 78, 0, 0.15);
+}
+
+.login-form label {
+  font-size: 13px;
+  color: wheat;
+  margin-top: 5px;
+}
+
+.login-form button {
+  margin-top: 15px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+
+  background: #bb8471;
+  color: white;
+  font-weight: bold;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.login-form button:hover {
+  background: #d44e00;
+  transform: translateY(-1px);
+}
+

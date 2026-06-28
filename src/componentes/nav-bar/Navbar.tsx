@@ -1,9 +1,11 @@
-import { NavLink, useNavigate } from "react-router-dom"; // Importamos useLocation
+import { NavLink, useNavigate, useLocation } from "react-router-dom"; // Importamos useLocation
+import { useEffect } from "react";
 import logo from "../../assets/img/logo vectorizado.png";
 import { ThemeToggle } from "./themeToggle";
 import type { Theme } from "../../types/types";
 import "./navbar.css";
 import { useAuth } from "../../context/AuthContex";
+import { useCarrito } from "../../context/caritoContext/CarritoContext";
 
 interface Props {
   theme: Theme;
@@ -13,8 +15,14 @@ interface Props {
 export function Navbar({ theme, onToggle }: Props) {
   // El hook useLocation nos dice en qué ruta estamos parados
   // const location = useLocation();
-  const { logout, user, isAuthenticate} = useAuth();
+  const { logout, user, isAuthenticate, clearError } = useAuth();
   const navigate = useNavigate()
+  const location = useLocation(); // Traemos la ubicación actual
+  const {carrito} = useCarrito()
+  // CADA VEZ QUE LA RUTA CAMBIE, LIMPIAMOS EL ERROR DEL CONTEXTO
+  useEffect(() => {
+    clearError();
+  }, [location.pathname]); 
 
   const handleLogout = () => {
     logout();
@@ -40,10 +48,17 @@ export function Navbar({ theme, onToggle }: Props) {
           </div>
 
           {/* 2. Carrito de compras */}
+        
           <div className="action-item cart-icon-wrapper">
+            
+            <NavLink to={'/carrito'}>
             <span className="material-icons-round">shopping_cart</span>
-            <span className="cart-badge">2</span>
-          </div>
+            </NavLink>
+            {isAuthenticate && user?.id ?
+            <span className="cart-badge">{carrito.reduce((acc, item) => acc + item.cantidad , 0)}</span>
+            :<span className="cart-badge">{0}</span>
+            } 
+            </div>
 
           {/*  El Menú siempre visible */}
           <NavLink to="/menu" className="btn-account">
