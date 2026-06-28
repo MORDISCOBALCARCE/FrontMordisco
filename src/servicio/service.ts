@@ -1,6 +1,7 @@
 
 import type { createPedido} from '../context/caritoContext/typeCarrito';
 import type { Productos, respCreate, respGet, User } from '../types/type';
+import type { Local, Productos, respCreate, respGet, User } from '../types/type';
 
 const Url_Base = 'http://localhost:3000';
 
@@ -12,6 +13,15 @@ export async function getUser(
     if (!resp) throw new Error(`No se encontraron usuarios`);
     const data = await resp.json()
     return data
+}
+export async function getLocal(
+    fetchAuth: (url: string, options?: RequestInit) => Promise<Response>,
+    controller: AbortController
+    ): Promise<respGet<Local>> {
+        const resp = await fetchAuth(`${Url_Base}/locales`, { signal: controller.signal });
+        if (!resp) throw new Error(`No se encontraron locales`);
+        const data = await resp.json()
+        return data
 }
 
 export async function postProductos(newProduct: FormData, fetchAuth2: (url: string, formData: FormData) => Promise<Response>): Promise<respCreate> {
