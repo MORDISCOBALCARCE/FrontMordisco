@@ -1,6 +1,5 @@
 
 import type { createPedido} from '../context/caritoContext/typeCarrito';
-import type { Productos, respCreate, respGet, User } from '../types/type';
 import type { Local, Productos, respCreate, respGet, User } from '../types/type';
 
 const Url_Base = 'http://localhost:3000';
