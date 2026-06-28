@@ -14,6 +14,8 @@ import { Administrador } from './page/admin/Administrador';
 import { MiLocal } from './page/local/MiLocal';
 import { FormProductPost } from './componentes/formularioProductos/FormProductPost';
 import { ProductList } from './page/local/ProductList';
+import { Carrito } from './page/carrito/Carrito';
+import { CarritoProvider } from './context/caritoContext/CarritoContext';
 
 function App() {
   const { theme, toggleTheme } = useThemeMode()
@@ -24,6 +26,8 @@ function App() {
       <div className="min-h-screen bg-background-light dark:bg-background-dark text-secondary dark:text-gray-100 transition-colors duration-300">
         <BrowserRouter>
           <ContextProvider>
+            <CarritoProvider>
+
             <Navbar theme={theme} onToggle={toggleTheme} />
 
             <Routes>
@@ -38,6 +42,7 @@ function App() {
               <Route element={<ProtectedRoute />}>
                 <Route path="/menu" element={<Menu />} />
                 <Route path='/admin' element={<Administrador />} />
+                <Route path='/carrito' element={<Carrito/>} />
 
                 <Route path='/local' element={<MiLocal />}>
                 <Route index element={<ProductList/>} />
@@ -47,6 +52,7 @@ function App() {
 
             </Routes>
 
+            </CarritoProvider>
           </ContextProvider>
           <Footer />
         </BrowserRouter>

@@ -1,5 +1,5 @@
 export interface User{
-    id: number,
+    id_usuario: number,
     nombre: string,
     apellido: string,
     email: string,
@@ -17,15 +17,22 @@ export interface respCreate{
     messagge: string
 }
 
+export interface Payload { //mismo tipado del token que devolvemos en back
+  id: number;
+  email: string;
+  nombre: string;
+  rol: string;
+}
+
 export interface responLogin{
     code: number,
     messagge: string,
     access_token: string
-    user : User
+    user : Payload        //lo pasamos aca porque el id de la autentificacion 
 }
 
 export interface AuthContextType{
-    user: User | undefined,
+    user: Payload | undefined,    //aca tambien 
     token: string | undefined,
     isLoading: boolean, 
     login: (email: string, pass: string) => Promise<responLogin>,
