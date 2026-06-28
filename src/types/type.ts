@@ -56,6 +56,7 @@ export type FetchState<T> =
         categoria? : {
             nombre:string
         },
-        local_id? : number,
+        // local_id? : number,
+        tiempo_preparacion: number,
 
     }

@@ -5,6 +5,7 @@ import { ThemeToggle } from "./themeToggle";
 import type { Theme } from "../../types/types";
 import "./navbar.css";
 import { useAuth } from "../../context/AuthContex";
+import { useCarrito } from "../../context/caritoContext/CarritoContext";
 
 interface Props {
   theme: Theme;
@@ -17,7 +18,7 @@ export function Navbar({ theme, onToggle }: Props) {
   const { logout, user, isAuthenticate, clearError } = useAuth();
   const navigate = useNavigate()
   const location = useLocation(); // Traemos la ubicación actual
-
+  const {carrito} = useCarrito()
   // CADA VEZ QUE LA RUTA CAMBIE, LIMPIAMOS EL ERROR DEL CONTEXTO
   useEffect(() => {
     clearError();
@@ -48,8 +49,10 @@ export function Navbar({ theme, onToggle }: Props) {
 
           {/* 2. Carrito de compras */}
           <div className="action-item cart-icon-wrapper">
+            <NavLink to={'/carrito'}>
             <span className="material-icons-round">shopping_cart</span>
-            <span className="cart-badge">2</span>
+            </NavLink>
+            <span className="cart-badge">{carrito.reduce((acc, item) => acc + item.cantidad , 0)}</span>
           </div>
 
           {/*  El Menú siempre visible */}

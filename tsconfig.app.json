@@ -18,7 +18,7 @@
     /* Linting */
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
+    "erasableSyntaxOnly": false, //pase a false para que anden los nombres de los enum
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src"]

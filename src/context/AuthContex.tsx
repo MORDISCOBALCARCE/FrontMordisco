@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-import type { AuthContextType, responLogin, User } from "./type";
+import type { AuthContextType, Payload, responLogin, User } from "./type";
 
 
 export const Url_Base = 'http://localhost:3000';
@@ -11,7 +11,7 @@ interface props {
 }
 
 export function ContextProvider({ children }: props) {
-    const [user, setUser] = useState<User>();
+    const [user, setUser] = useState<Payload>();
     const [token, setToken] = useState<string>();
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState<string>('')
