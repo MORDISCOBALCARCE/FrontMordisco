@@ -47,7 +47,7 @@ export interface createPedido {
   estado_pago: EstadoDePago;  
   direccion_entrega: string;
   observaciones: string;
-  usuario_id: number ;
+  usuario: number ;
   detalles: DetallesPedido[];
 }
 

@@ -48,12 +48,17 @@ export function Navbar({ theme, onToggle }: Props) {
           </div>
 
           {/* 2. Carrito de compras */}
+        
           <div className="action-item cart-icon-wrapper">
+            
             <NavLink to={'/carrito'}>
             <span className="material-icons-round">shopping_cart</span>
             </NavLink>
+            {isAuthenticate && user?.id ?
             <span className="cart-badge">{carrito.reduce((acc, item) => acc + item.cantidad , 0)}</span>
-          </div>
+            :<span className="cart-badge">{0}</span>
+            } 
+            </div>
 
           {/*  El Menú siempre visible */}
           <NavLink to="/menu" className="btn-account">
