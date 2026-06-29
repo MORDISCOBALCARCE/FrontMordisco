@@ -16,6 +16,7 @@ import { FormProductPost } from './componentes/formularioProductos/FormProductPo
 import { ProductList } from './page/local/ProductList';
 import { Carrito } from './page/carrito/Carrito';
 import { CarritoProvider } from './context/caritoContext/CarritoContext';
+import { Pedidos_local } from './features/pedidos-local/Pedidos_local';
 
 function App() {
   const { theme, toggleTheme } = useThemeMode()
@@ -47,6 +48,7 @@ function App() {
                 <Route path='/local' element={<MiLocal />}>
                 <Route index element={<ProductList/>} />
                 <Route path='nuevoProducto' element={<FormProductPost/>} />
+                <Route path='pedidos' element={<Pedidos_local/>} />
                 </Route>
               </Route>
 

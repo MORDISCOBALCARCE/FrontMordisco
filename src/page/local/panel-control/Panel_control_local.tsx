@@ -29,6 +29,18 @@ export function Panel_control_local() {
                 Agregar producto
             </NavLink>
 
+             <NavLink
+                to="/local/pedidos"
+                className={({ isActive }) =>
+                    `px-4 py-3 rounded-xl transition font-medium ${isActive
+                        ? "bg-(--primary) text-white"
+                        : "hover:bg-(--surface-container-low)"
+                    }`
+                }
+            >
+                Pedidos
+            </NavLink>
+
         </nav>
     );
 }

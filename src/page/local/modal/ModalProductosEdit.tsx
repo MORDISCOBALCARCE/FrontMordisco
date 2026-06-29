@@ -11,13 +11,13 @@ interface ModalProps {
     onClose: () => void;
     // Recibe las propiedades editadas para actualizar el estado local de la tabla
     onSuccess: (datosEditados: Partial<Productos>) => void;
-    // handleEdit: (datos: Partial<Productos>, endopoint: string, id: number) => Promise<any>;
 }
 
 export function ModalProductosEdit({ producto, onClose, onSuccess }: ModalProps) {
     // Estado local del formulario con los valores iniciales del producto
     const [formData, setFormData] = useState({ ...producto });
-const {handleEdit} = useAccion()
+    const {handleEdit} = useAccion()
+    
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({
             ...formData, // Copiamos lo que ya había
