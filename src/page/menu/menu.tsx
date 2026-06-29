@@ -13,11 +13,14 @@ export default function Menu() {
     const [filtcategoria, setFiltCategoria] = useState<Productos[]>([])
     const [catSelec, setCateSelec] = useState('')
 
-    useEffect(() => { setFiltCategoria(product) }, [product])
+    useEffect(() => { 
+
+        const activos = product.filter((p) =>(p.activo === true))
+        setFiltCategoria(activos) }, [product])
 
     function selCategoria(cat: string) {
         setCateSelec(cat)
-        const select = product.filter((prod) => prod.categoria?.nombre.includes(cat))
+        const select = product.filter((prod) => prod.categoria?.nombre.includes(cat) && prod.activo === true)
         setFiltCategoria(select)
 
     }
