@@ -1,10 +1,27 @@
 
 import {useUsuarios} from "../hooks/useUsuarios";
+import { useEffect, useState } from "react";
+import { useAccion } from "../../../hooks/eliminar-editar/useAccion";
+import { ModalUsuarioForm } from "./ModalUsuarioForm"; 
+import type { User } from "../../../types/type";
 import '../style.css'
 
 export function TablaUsuarios() {
 
   const { state } = useUsuarios();
+  const { handleDelete, handleRestore } = useAccion();
+  
+  // Estado local intermedio para permitir mutaciones dinámicas (igual que en ProductList)
+  const [usuarios, setUsuarios] = useState<User[]>([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [usuarioEdicion, setUsuarioEdicion] = useState<User | null>(null);
+   
+  // Sincronizar el estado global con el estado local de la tabla
+  useEffect(() => {
+    if (state.status === 'success') {
+      setUsuarios(state.data.data);
+    }
+  }, [state]);
 
     if (state.status === "idle" || state.status === "loading") {
       return (
@@ -17,10 +34,50 @@ export function TablaUsuarios() {
     if (state.status === "error") {
       return (
         <div className="min-h-screen flex items-center justify-center text-red-500">
-          Error al cargar usuarios
+          Error al cargar usuarios: {state.error}
         </div>
       );
     }
+
+    // Funciones de actualización local del estado (Mutación fluida de la interfaz)
+  const agregarUsuarioLocal = (nuevoUser: User) => {
+    setUsuarios((prev) => [nuevoUser, ...prev]);
+  };
+
+  const actualizarUsuarioLocal = (id: number, datosActualizados: Partial<User>) => {
+    setUsuarios((prev) =>
+      prev.map((u) => (u.id_usuario === id ? { ...u, ...datosActualizados } : u))
+    );
+  };
+
+  const cambiarInactivo = (id: number) => {
+    setUsuarios((prev) =>
+      prev.map((u) => (u.id_usuario === id ? { ...u, activo: false } : u))
+    );
+  };
+
+  const cambiarActivo = (id: number) => {
+    setUsuarios((prev) =>
+      prev.map((u) => (u.id_usuario === id ? { ...u, activo: true } : u))
+    );
+  };
+
+  // Manejadores de clics para los botones de la tabla
+  const clickEliminar = async (id: number) => {
+    const resp = await handleDelete('usuarios', id);
+    if (resp) {
+      cambiarInactivo(id);
+    }
+  };
+
+  const clickRestaurar = async (id: number) => {
+    const resp = await handleRestore('usuarios', id);
+    if (resp) {
+      cambiarActivo(id);
+    }
+  };
+
+
     return (
       <>
         {/* MAIN */}
@@ -38,7 +95,9 @@ export function TablaUsuarios() {
                   </p>
                 </div>
 
-                <button className="bg-(--primary) hover:bg-(--primary-hover) text-white px-6 py-3 rounded-xl font-bold shadow-lg transition">
+                <button 
+                onClick={() => { setUsuarioEdicion(null); setModalOpen(true); }}
+                className="bg-(--primary) hover:bg-(--primary-hover) text-white px-6 py-3 rounded-xl font-bold shadow-lg transition">
                   + Nuevo Usuario
                 </button>
               </div>
@@ -73,7 +132,7 @@ export function TablaUsuarios() {
                     </thead>
 
                     <tbody className="divide-y divide-(--outline-variant)">
-                      {state.data.data.map((usuario) => (
+                      {usuarios.map((usuario) => (
                         <tr
                           key={usuario.id_usuario}
                           className="hover:bg-(--surface-container-low) transition-colors"
@@ -114,8 +173,12 @@ export function TablaUsuarios() {
 
                           <td className="px-3 md:px-6 py-3 md:py-5">
                             <div className="flex justify-start md:justify-end gap-3">
+                              {/* Botón de EDITAR */}
                               <div className="relative group">
-                                <button className="size-8 rounded-lg flex items-center justify-center text-[#9c7349] hover:bg-primary/10 hover:text-primary transition-all">
+
+                                <button 
+                                onClick={() => { setUsuarioEdicion(usuario); setModalOpen(true); }}
+                                className="size-8 rounded-lg flex items-center justify-center text-[#9c7349] hover:bg-primary/10 hover:text-primary transition-all">
                                   <span className="material-symbols-outlined text-[20px]">edit</span>
                                 </button>
 
@@ -126,17 +189,29 @@ export function TablaUsuarios() {
                                   Editar
                                 </span>
                               </div>
+                              
+                              {/* Botón de BORRAR */}
 
                               <div className="relative group">
-                                <button className="size-8 rounded-lg flex items-center justify-center text-[#9c7349] hover:bg-primary/10 hover:text-red-500 transition-all">
-                                  <span className="material-symbols-outlined text-[20px]">delete</span>
-                                </button>
+                                {usuario.activo ? (
+                                  <button 
+                                  onClick={() => clickEliminar(usuario.id_usuario)}
+                                  className="size-8 rounded-lg flex items-center justify-center text-[#9c7349] hover:bg-primary/10 hover:text-red-500 transition-all">
+                                    <span className="material-symbols-outlined text-[20px]">delete</span>
+                                  </button>
+                                ) : (
+                                  <button 
+                                  onClick={() => clickRestaurar(usuario.id_usuario)}
+                                  className="size-8 rounded-lg flex items-center justify-center text-[#9c7349] hover:bg-primary/10 hover:text-green-500 transition-all">
+                                    <span className="material-symbols-outlined text-[20px]">restore_from_trash</span>
+                                  </button>
+                                )}
 
                                 <span className="absolute -top-6 left-1/2 -translate-x-1/2 
                                                 opacity-0 group-hover:opacity-100
                                                 bg-gray-800 text-white text-xs px-2 py-1 rounded
                                                 transition pointer-events-none whitespace-nowrap">
-                                  Borrar
+                                  {usuario.activo ? 'Borrar' : 'Restaurar'}
                                 </span>
                               </div>
                               
@@ -152,6 +227,22 @@ export function TablaUsuarios() {
               
             </div>
           </main>
+          {/* FORMULARIO DE EDICIÓN O ALTA */}
+      {modalOpen && (
+        <ModalUsuarioForm
+          usuario={usuarioEdicion}
+          onClose={() => { setModalOpen(false); setUsuarioEdicion(null); }}
+          onSuccess={(datosModificados: User | Partial<User>) => {
+            if (usuarioEdicion) {
+              // Si estábamos editando, mezclamos los cambios con el estado de la tabla
+              actualizarUsuarioLocal(usuarioEdicion.id_usuario, datosModificados);
+            } else {
+              // Si es un alta nueva, lo insertamos arriba en la tabla
+              agregarUsuarioLocal(datosModificados as User);
+            }
+          }}
+        />
+      )}
       </>
     );
 
