@@ -46,19 +46,29 @@ export function FormProductPost() {
     return (
         <>
 
-        {error && (
-            <p>{error}</p>
-        )}
+            {error && (
+                <p>{error}</p>
+            )}
             <form onSubmit={handleSubmit} className={styles.cont_form}>
                 <h2>Agregar producto</h2>
 
                 <input type="text" placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
                 <input type="number" placeholder="Precio" value={precio || ''} onChange={(e) => setPrecio(Number(e.target.value))} required />
-                <label >Descripcion</label>
-                <textarea value={descripcion} onChange={(e) => setDescripcion(e.target.value)} required className={styles.inputText} />
-                <input type="number" placeholder="Categoría" value={categoria || ''} onChange={(e) => setCategoria(Number(e.target.value))} required />
+                <textarea placeholder="Descripcion" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} required className={styles.inputText} />
+                <select
+                    value={categoria || ''}
+                    onChange={(e) => setCategoria(Number(e.target.value))}
+                    required
+                >
+                    <option value="" disabled hidden>Selecciona una categoría</option>
+                    <option value={1}>Al plato</option>
+                    <option value={2}>Bebidas</option>
+                    <option value={3}>Postres</option>
+                    <option value={4}>Pizza</option>
+                    <option value={5}>Hamburguesas</option>
+                    <option value={6}>Otros</option>
+                </select>
 
-                <label >Imagen del Producto</label>
                 <input className={styles.selec_img}
                     type="file"
                     accept="image/*"
