@@ -26,14 +26,14 @@ export default function Hamburgesa({prod}:Props){
                     {prod.descripcion} ¡Solo por hoy!
                     </p>
                     
-                    <div className="flex flex-wrap gap-4">
+                    {/* <div className="flex flex-wrap gap-4">
                     <button className="bg-white text-primary px-6 py-3.5 md:px-8 md:py-4 rounded-2xl font-bold text-base md:text-lg hover:shadow-xl transition-all hover:scale-105 active:scale-95">
                         ¡Pedir ahora!
                     </button>
                     <button className="bg-transparent border-2 border-white/50 text-white px-6 py-3.5 md:px-8 md:py-4 rounded-2xl font-bold text-base md:text-lg hover:bg-white/10 transition-all">
                         Ver detalles
                     </button>
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* 2. LADO DE LA IMAGEN (50% exacto en escritorio, visible en móvil) */}
