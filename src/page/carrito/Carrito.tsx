@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { useAuth } from "../../context/AuthContex";
 import { useCarrito } from "../../context/caritoContext/CarritoContext";
 import { Estado, EstadoDePago, MetodoPago, ModoRetiro, type createPedido } from "../../context/caritoContext/typeCarrito";
 import { useApi } from "../../hooks/useApi";
 import { postPedido } from "../../servicio/service";
-import { PedidoPorCiiente } from "../../features/pedidoPorCliente/PedidoPorCliente";
+
 
 export function Carrito() {
     const { carrito, totalPrecio, limpiarCarrito, eliminarDelCarrito } = useCarrito();
@@ -12,7 +12,7 @@ export function Carrito() {
     const { fetchAuth } = useApi()
     const [direccion, setdireccion] = useState('')
 
-    
+   
 
     const enviarPedidoAlBackend = async () => {
         if (carrito.length === 0) return alert("Tu carrito está vacío.");
@@ -78,8 +78,8 @@ export function Carrito() {
                 Confirmar Compra
             </button>
 
+            
 
-            <PedidoPorCiiente />
         </>
     );
 };
