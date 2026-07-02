@@ -16,8 +16,10 @@ import { postPedido } from "../../servicio/service";
 export function Carrito() {
     const { carrito, totalPrecio, limpiarCarrito, eliminarDelCarrito } = useCarrito();
     const { user } = useAuth();
-    const { fetchAuth } = useApi();
-    const [direccion, setdireccion] = useState('');
+    const { fetchAuth } = useApi()
+    const [direccion, setdireccion] = useState('')
+
+   
 
     const enviarPedidoAlBackend = async () => {
         if (carrito.length === 0) return alert("Tu carrito está vacío.");
@@ -30,7 +32,8 @@ export function Carrito() {
             estado_pago: EstadoDePago.PENDIENTE,
             direccion_entrega: direccion,
             observaciones: "Pedido enviado desde la app móvil/web",
-            usuario: Number(user!.id),
+            usuario: Number(user!.id), // ID del cliente logueado
+            // Mapeamos los items respetando la relación 1:1 de DetallesPedido -> Producto
             detalles: carrito.map((item) => ({
                 cantidad: item.cantidad,
                 precio_unitario: Number(item.producto.precio),
