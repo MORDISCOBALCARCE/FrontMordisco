@@ -2,9 +2,9 @@
 import {  useRef, useState } from 'react';
 import './login.css'
 import type React from "react";
-import { useAuth } from '../../context/AuthContex';
+import { useAuth } from '../../context/AuthContext/AuthContext';
 import { NavLink } from 'react-router-dom';
-import { PassRecoveryModal } from './passwordRecoveryModal';
+import { PassRecoveryModal } from './component/passwordRecoveryModal';
 
 //import { NavLink, useNavigate} from 'react-router-dom';
 

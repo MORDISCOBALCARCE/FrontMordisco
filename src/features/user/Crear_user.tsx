@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { enviarDatos } from "./service";
+import { enviarDatos } from "./hooks/service";
 import { useNavigate} from "react-router-dom";
 import type React from "react";
 
@@ -34,7 +34,6 @@ export function Crear_user() {
       // Reemplazamos el alert nativo por una redirección fluida o un mensaje de éxito si lo preferís
       navigate('/login');
     } catch (error) {
-      console.error(error);
       setMensaje('Hubo un error al registrar el usuario');
     } finally {
       setIsLoading(false);

@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { enviarDatos } from "../../../features/user/service"; 
+import { enviarDatos } from "../../../features/User/hooks/service"; 
 import { useAccion } from "../../../hooks/eliminar-editar/useAccion";
 import type { User } from "../../../types/type";
 

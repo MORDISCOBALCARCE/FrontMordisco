@@ -1,5 +1,5 @@
 
-import { useAuth } from '../context/AuthContex';
+import { useAuth } from '../context/AuthContext/AuthContext';
 
 export function useApi(){
     const { token, logout } = useAuth();

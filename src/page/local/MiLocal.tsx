@@ -1,7 +1,7 @@
 
 import { Outlet } from "react-router-dom";
-import { useAuth } from "../../context/AuthContex"
-import { Panel_control_local } from "./panel-control/Panel_control_local";
+import { useAuth } from "../../context/AuthContext/AuthContext"
+import { Panel_control_local } from "./components/panel-control/Panel_control_local";
 
 export function MiLocal() {
   const { user } = useAuth();
