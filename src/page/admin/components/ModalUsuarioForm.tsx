@@ -126,7 +126,7 @@ export function ModalUsuarioForm({ usuario, onClose, onSuccess }: Props) {
               <div className="space-y-0.5">
                 <label className="text-[12px] font-semibold text-(--on-surface-variant) block ml-1">Nombre*</label>
                 <input
-                  className="w-full px-3 py-2 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[14px] focus:outline-none focus:ring-2 focus:ring-(--primary) text-black"
+                  className="w-full px-3 py-2 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[14px] focus:outline-none focus:ring-2 focus:ring-(--primary) text-(--on-surface) dark:text-white"
                   type="text" name="nombre" value={formData.nombre} onChange={handleChange} required disabled={isLoading}
                 />
               </div>
@@ -135,7 +135,7 @@ export function ModalUsuarioForm({ usuario, onClose, onSuccess }: Props) {
               <div className="space-y-0.5">
                 <label className="text-[12px] font-semibold text-(--on-surface-variant) block ml-1">Apellido*</label>
                 <input
-                  className="w-full px-3 py-2 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[14px] focus:outline-none focus:ring-2 focus:ring-(--primary) text-black"
+                  className="w-full px-3 py-2 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[14px] focus:outline-none focus:ring-2 focus:ring-(--primary) text-(--on-surface) dark:text-white"
                   type="text" name="apellido" value={formData.apellido} onChange={handleChange} required disabled={isLoading}
                 />
               </div>
@@ -145,7 +145,7 @@ export function ModalUsuarioForm({ usuario, onClose, onSuccess }: Props) {
             <div className="space-y-0.5">
               <label className="text-[12px] font-semibold text-(--on-surface-variant) block ml-1">Email*</label>
               <input
-                className="w-full px-3 py-2 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[14px] focus:outline-none focus:ring-2 focus:ring-(--primary) text-black"
+                className="w-full px-3 py-2 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[14px] focus:outline-none focus:ring-2 focus:ring-(--primary) text-(--on-surface) dark:text-white"
                 type="email" name="email" value={formData.email} onChange={handleChange} required disabled={isLoading}
               />
             </div>
@@ -156,7 +156,7 @@ export function ModalUsuarioForm({ usuario, onClose, onSuccess }: Props) {
                 Contraseña{usuario ? " (Dejar vacío para mantener)" : "*"}
               </label>
               <input
-                className="w-full px-3 py-2 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[14px] focus:outline-none focus:ring-2 focus:ring-(--primary) text-black"
+                className="w-full px-3 py-2 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[14px] focus:outline-none focus:ring-2 focus:ring-(--primary) text-(--on-surface) dark:text-white"
                 type="password" name="password" value={formData.password} onChange={handleChange} placeholder="••••••••" required={!usuario} disabled={isLoading}
               />
             </div>
@@ -165,7 +165,7 @@ export function ModalUsuarioForm({ usuario, onClose, onSuccess }: Props) {
             <div className="space-y-0.5">
               <label className="text-[12px] font-semibold text-(--on-surface-variant) block ml-1">Teléfono</label>
               <input
-                className="w-full px-3 py-2 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[14px] focus:outline-none focus:ring-2 focus:ring-(--primary) text-black"
+                className="w-full px-3 py-2 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[14px] focus:outline-none focus:ring-2 focus:ring-(--primary) text-(--on-surface) dark:text-white"
                 type="text" name="telefono" value={formData.telefono} onChange={handleChange} placeholder="+54 9..." disabled={isLoading}
               />
             </div>
@@ -177,7 +177,7 @@ export function ModalUsuarioForm({ usuario, onClose, onSuccess }: Props) {
                 name="rol"
                 value={formData.rol}
                 onChange={handleChange}
-                className="w-full px-3 py-2 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[14px] focus:outline-none focus:ring-2 focus:ring-(--primary) text-black font-medium"
+                className="w-full px-3 py-2 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[14px] focus:outline-none focus:ring-2 focus:ring-(--primary) text-(--on-surface) dark:text-white font-medium"
                 required
                 disabled={isLoading}
               >

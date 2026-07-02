@@ -23,7 +23,7 @@ export const categoriasMock: Categoria[] = [
   },
   {
     id: 4,
-    nombre: "pizza",
+    nombre: "Pizza",
     icono: "local_pizza",
     bg: "bg-yellow-50 dark:bg-yellow-900/30",
     color: "text-yellow-600",
