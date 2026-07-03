@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { enviarDatos } from "./hooks/service";
 import { useNavigate} from "react-router-dom";
 import type React from "react";
+import { enviarDatos } from "./hooks/service";
 
 export function Crear_user() {
   const [nombre, setNombre] = useState('');

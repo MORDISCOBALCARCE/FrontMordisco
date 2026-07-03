@@ -1,7 +1,8 @@
 import { useState, type FormEvent } from "react";
-import { enviarDatos } from "../../../features/User/hooks/service"; 
+
 import { useAccion } from "../../../hooks/eliminar-editar/useAccion";
 import type { User } from "../../../types/type";
+import { enviarDatos } from "../../../features/User/hooks/service";
 
 interface Props {
   usuario: User | null; // Si viene null es creación, si viene objeto es edición
