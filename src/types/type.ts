@@ -31,8 +31,8 @@ export interface respCreate{
 }
 export interface respGet<T>{
     code: number,
-    messagge: string,
-    data : T[] 
+    message: string,
+    data :  T[] 
 }
 export interface responLogin{
     code: number,

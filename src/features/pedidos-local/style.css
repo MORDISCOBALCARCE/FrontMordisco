@@ -1,0 +1,228 @@
+/* Paleta de colores inspirada en Tailwind CSS */
+:root {
+    --tw-bg-card: #ffffff00;
+    --tw-text-main: #f1f5ff;
+    /* slate-900 */
+    --tw-text-muted: #d4e6ff;
+    /* slate-600 */
+    --tw-text-light: #fffafa;
+    /* slate-400 */
+    --tw-border: #ce5d17;
+    /* slate-200 */
+    --tw-primary: #e89c10;
+    /* emerald-500 */
+    --tw-primary-hover: #e89c10;
+    /* emerald-600 */
+    --tw-secondary: #64748b;
+    /* slate-500 */
+    --tw-secondary-hover: #475569;
+    /* slate-600 */
+}
+
+/* Contenedor principal (Card) */
+:root {
+    /* Fuente principal */
+    font-family: 'Plus Jakarta Sans', sans-serif;
+
+    /* Backgrounds */
+    --color-background-light: #fef0ec;
+    --color-background-dark: #1a1513;
+    --background: #fef9ec;
+
+    /* Brand */
+    --primary: #a93200;
+    --primary-hover: #922900;
+    --primary-container: #d1430a;
+    --secondary-container: #fed4c5;
+
+    /* Surfaces */
+    --surface-container: #fff7f3;
+    --surface-container-low: #fff1ec;
+    --surface-container-lowest: #ffffff;
+
+    /* Borders */
+    --outline: #f0d6ca;
+    --outline-variant: #e2bfb4;
+
+    /* Text */
+    --on-surface: #251914;
+    --on-surface-variant: #5a4139;
+    --on-primary-container: #fffbff;
+
+    /* Status */
+    --success: #10b981;
+    --success-bg: #d1fae5;
+
+    --danger: #ef4444;
+    --danger-bg: #fee2e2;
+
+    --warning: #f59e0b;
+    --warning-bg: #fef3c7;
+
+    /* Sombras */
+    --shadow-soft: 0 10px 30px rgba(74, 48, 38, 0.08);
+    --shadow-card: 0 20px 40px rgba(74, 48, 38, 0.12);
+
+    /* Radius */
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+
+    /* Spacing */
+    --p-xs: 4px;
+    --p-sm: 12px;
+    --p-md: 20px;
+    --p-lg: 40px;
+    --p-xl: 64px;
+}
+
+.dark {
+    --background: #1a1513;
+
+    --surface-container: #2a211d;
+    --surface-container-low: #332822;
+    --surface-container-lowest: #251c18;
+
+    --outline: #5a4139;
+    --outline-variant: #6b4b3e;
+
+    --on-surface: #fef9ec;
+    --on-surface-variant: #d8bdb0;
+}
+
+.cont_pedido:hover {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    /* shadow-lg */
+}
+
+/* Texto de encabezado (Nombre/Apellido) */
+.cont_pedido strong {
+    display: block;
+    font-size: 1.125rem;
+    /* text-lg */
+    font-weight: 600;
+    /* font-semibold */
+    margin-bottom: 0.25rem;
+}
+
+.cont_pedido strong span {
+    color: var(--tw-primary);
+    /* Resalta el nombre con verde */
+}
+
+.cont_pedido {
+    width: 360px;
+    min-height: 520px;
+    /* Todas iguales */
+    display: flex;
+    flex-direction: column;
+
+    padding: 20px;
+    border: 2px solid var(--primary-container);
+    border-radius: 16px;
+    background: var(--surface-container);
+    color: var(--on-surface);
+    box-shadow: var(--shadow-soft);
+}
+
+.cont_pedido p {
+    font-size: 0.875rem;
+    /* text-sm */
+    color: var(-tw-secondary);
+    margin: 0.25rem 0;
+}
+
+/* Estado del pedido destacado */
+.cont_pedido p:has(strong) {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    background-color: #f8fafc;
+    /* slate-50 */
+    border-radius: 0.375rem;
+    /* rounded-md */
+    display: inline-block;
+    border: 1px solid var(--tw-border);
+}
+
+/* Lista de productos */
+.cont_pedido ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0 0;
+    border-top: 1px solid var(--tw-border);
+    /* Separador */
+    flex: 1;
+    overflow-y: auto;
+    /* Si hay muchos productos aparece scroll */
+}
+
+/* Items de la lista (Cada producto) */
+.cont_pedido ul li {
+    padding: 0.75rem 0;
+    border-bottom: 1px dashed var(--tw-border);
+}
+
+.cont_pedido ul li span strong {
+    font-size: 0.95rem;
+    color: var(--tw-text-main);
+}
+
+.cont_pedido ul li p {
+    font-size: 0.815rem;
+    color: var(--tw-text-light);
+}
+
+/* Importe Total */
+.cont_pedido p:last-of-type {
+    font-size: 1.125rem;
+    /* text-lg */
+    font-weight: 700;
+    /* font-bold */
+    color: var(--tw-text-main);
+    margin: 1.25rem 0;
+}
+
+/* Botón interactivo estilo Tailwind */
+.cont_pedido button {
+    width: 100%;
+    padding: 0.625rem 1.25rem;
+    /* py-2.5 px-5 */
+    font-size: 0.875rem;
+    /* text-sm */
+    font-weight: 500;
+    /* font-medium */
+    border-radius: 0.5rem;
+    /* rounded-lg */
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+/* Estilos dinámicos para el botón basados en el texto (o puedes manejarlo con clases si prefieres) */
+.cont_pedido button {
+    background-color: var(--tw-primary);
+    color: white;
+    margin-top: auto;
+}
+
+.cont_pedido button:hover {
+    background-color: var(--tw-primary-hover);
+}
+
+/* Si el botón dice "Volver a Pendiente", cambia a color gris oscuro mediante CSS (hack limpio) */
+.cont_pedido button:not(:has-text):active,
+.cont_pedido button:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+}
+
+.cont_data {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: stretch;
+    /* Todas la misma altura */
+}

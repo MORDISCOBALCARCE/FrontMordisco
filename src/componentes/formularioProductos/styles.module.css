@@ -35,22 +35,28 @@
         box-sizing: border-box;
     }
 
-    & label {
-        color: black;
+    & select {
+        background-color: #f9ad6295;
+        color: #1a202c;
+        height: 50px;
     }
-
 }
+
+
 
 .inputText {
     border: 1px solid #1e242b;
     background-color: #f9ad629f;
+    color: #1a202c;
+    padding-left: 10px;
 }
 
-.selec_img:hover, button{
+.selec_img:hover,
+button {
     cursor: pointer;
 }
 
-.btn{
+.btn {
     display: flex;
     justify-content: center;
     background-color: #865728;
@@ -61,6 +67,6 @@
 
 }
 
-.art_conte{
+.art_conte {
     display: flex;
 }

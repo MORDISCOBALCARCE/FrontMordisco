@@ -15,7 +15,7 @@ interface props {
 }
 
 export function TablaProductosLocal({ producto, onDelete, onRestore, onEdit }: props) {
-    const { handleDelete, handleRestore, handleEdit } = useAccion();
+    const { handleDelete, handleRestore} = useAccion();
     const [isModalOpen, setIsModalOpen] = useState(false);
 
 
@@ -68,7 +68,7 @@ export function TablaProductosLocal({ producto, onDelete, onRestore, onEdit }: p
                 <td className="px-6 py-5">
                     <div className="flex justify-end gap-3">
 
-                        <button onClick={(e) => setIsModalOpen(true)}
+                        <button onClick={() => setIsModalOpen(true)}
                             className="bg-(--primary) hover:bg-(--primary-hover) text-white px-6 py-3 rounded-xl font-bold shadow-lg transition" >🔧</button>
 
                         {producto.activo ? (
