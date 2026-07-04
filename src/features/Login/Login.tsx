@@ -17,6 +17,7 @@ function Login() {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showRecoveryModal, setShowRecoveryModal] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   
   const mainRef = useRef<HTMLElement>(null);
   // 1. Traemos tanto 'error' como 'clearError' directamente del contexto
@@ -30,7 +31,7 @@ function resetearErrores() {
   setErrores('');
   clearError();
 }
- 
+
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -119,15 +120,22 @@ function resetearErrores() {
                 </label>
               </div>
               <div className="relative group">
-                <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-(--on-surface-variant) group-focus-within:text-(--primary) transition-colors">
-                  lock
-                </span>
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-(--on-surface-variant) hover:text-(--primary) focus:outline-none transition-colors z-20"
+                  title={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
+                >
+                  {/* Si querés mantener estrictamente el ícono de "lock", podés dejarlo estático, 
+                      pero cambiarlo por 'visibility' / 'visibility_off' mejora mucho la UX */}
+                  {showPassword ? 'visibility' : 'lock'}
+                </button>
                 <input 
                   className="w-full pl-12 pr-4 py-4 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[16px] focus:outline-none focus:ring-2 focus:ring-(--primary) focus:border-transparent transition-all placeholder:text-(--on-surface-variant)/40" 
                   id="password" 
                   name="password" 
                   placeholder="••••••••" 
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   disabled={isLoading}
