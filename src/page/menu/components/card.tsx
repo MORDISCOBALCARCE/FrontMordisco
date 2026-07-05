@@ -45,8 +45,8 @@ export function Card({ producto }: Props) {
 
                     <button
                         onClick={handleAgregar}
-                        className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white p-2 rounded-xl transition-all shadow-md active:scale-95">
-                        <span className="material-symbols-outlined">+</span>
+                        className="flex items-center justify-center bg-primary hover:bg-primary/90 text-white w-9 h-9 rounded-full transition-all shadow-md active:scale-95">
+                        <span className="material-symbols-outlined flex items-center justify-center leading-none h-full w-full">+</span >
                     </button>
 
                 </div>
