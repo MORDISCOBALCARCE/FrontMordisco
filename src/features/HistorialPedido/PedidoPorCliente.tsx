@@ -22,7 +22,7 @@ export function PedidoPorCiiente() {
     return (
 
         <div >
-            {pedidos.map((pr) => (<CardClienteCarrito key={pr.id_pedido} pedido={pr}/>))}
+            {pedidos.reverse().map((pr) => (<CardClienteCarrito key={pr.id_pedido} pedido={pr}/>))}
         </div>
     )
 }

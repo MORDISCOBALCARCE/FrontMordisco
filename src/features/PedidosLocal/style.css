@@ -24,10 +24,11 @@
     /* Fuente principal */
     font-family: 'Plus Jakarta Sans', sans-serif;
 
-    /* Backgrounds */
-    --color-background-light: #fef0ec;
+    /* Backgrounds 
+    --background: #fef9ec;*/
+    --color-background-light: #f4e7c4;
     --color-background-dark: #1a1513;
-    --background: #fef9ec;
+    --background: #f4e7c4;
 
     /* Brand */
     --primary: #a93200;
@@ -166,12 +167,12 @@
 
 .cont_pedido ul li span strong {
     font-size: 0.95rem;
-    color: var(--tw-text-main);
+    color: var(--tw-secondary)
 }
 
 .cont_pedido ul li p {
     font-size: 0.815rem;
-    color: var(--tw-text-light);
+    color: var(--tw-secondary);
 }
 
 /* Importe Total */

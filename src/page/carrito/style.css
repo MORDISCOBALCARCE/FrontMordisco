@@ -42,6 +42,7 @@
 .carrito-table {
     width: 100%;
     border-collapse: collapse;
+    background: var(--surface-container-lowest);
 }
 
 .carrito-table th {
@@ -129,7 +130,7 @@
 .direccion-form label {
     font-size: .8rem;
     font-weight: 700;
-    color: var(--outline-variant);
+    color: var(--on-surface-variant);
     text-transform: uppercase;
 }
 

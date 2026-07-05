@@ -3,7 +3,7 @@ import './footer.css';
 function Footer() {
   return (
     <footer>
-      <p>© 2026 Mi App - Todos los derechos reservados</p>
+      <p>© 2026 - Mordisco - Todos los derechos reservados</p>
     </footer>
   );
 }
