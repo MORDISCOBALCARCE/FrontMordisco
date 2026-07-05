@@ -153,6 +153,7 @@ export function CarritoRender() {
                                 value={direccion}
                                 onChange={(e) => setdireccion(e.target.value)}
                                 placeholder="Ingresá tu calle y altura"
+                                required
                             />
                         </form>
 

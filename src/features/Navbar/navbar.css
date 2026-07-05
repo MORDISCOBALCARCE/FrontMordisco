@@ -23,10 +23,17 @@
 }
 
 /* --- LOGO GRANDE --- */
+.logo-section {
+  flex-shrink: 0; 
+  display: flex;
+  align-items: center;
+}
+
 .logo-img {
-  height: 150px;
-  /* Tamaño aumentado */
+  max-height: 150px;
   width: auto;
+  max-width: 100%;
+  object-fit: contain;
   transition: transform 0.3s ease;
 }
 
@@ -106,4 +113,39 @@
 .material-icons-round {
   font-size: 28px;
   cursor: pointer;
+}
+
+/* ==========================================
+   📱 CONFIGURACIÓN PARA CELULARES (MÁXIMO 768PX)
+   ========================================== */
+@media (max-width: 768px) {
+  .glass-nav {
+    height: 70px; /* Reducimos la altura general del navbar en celular */
+  }
+
+  .nav-container {
+    padding: 0 12px; /* Reducimos el margen lateral para aprovechar la pantalla */
+  }
+
+  .logo-img {
+    height: 55px; /* El logo se achica proporcionalmente para entrar en los 70px del nav */
+  }
+
+  .nav-actions {
+    gap: 8px; /* Espaciado mucho más compacto entre elementos */
+  }
+
+  .material-icons-round {
+    font-size: 24px; /* Iconos un poco más pequeños y estilizados para celular */
+  }
+
+  .btn-account {
+    padding: 6px 12px; /* Botones más compactos que no desbordan */
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    gap: 4px;
+  }
+
+  .btn-account .material-icons-round {
+    font-size: 16px; /* Icono interno del botón más chico */
+  }
 }

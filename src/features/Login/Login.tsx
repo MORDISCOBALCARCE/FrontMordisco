@@ -70,7 +70,7 @@ function Login() {
   };
 
   return (
-    <div className="bg-(--background) min-h-screen flex  justify-center p-(--p-margin-mobile) md:p-(--p-lg) selection:bg-(--primary-container) selection:text-(--on-primary-container) antialiased">
+    <div className="login-theme bg-(--background) min-h-screen flex  justify-center p-(--p-margin-mobile) md:p-(--p-lg) selection:bg-(--primary-container) selection:text-(--on-primary-container) antialiased">
 
       {/* Ambient Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">

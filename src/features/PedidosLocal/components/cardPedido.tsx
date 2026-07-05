@@ -42,7 +42,7 @@ export function CardPedido({ pedido }: props) {
                     <li key={p.id_detalle}>
                         <span><strong>{p.producto.nombre}:  {p.cantidad}</strong></span>
                         <span>Descripcion: {p.producto.descripcion}</span>
-                        <p>precio unidad: <span>{p.precio_unitario}</span></p>
+                       <span> precio unidad: {p.precio_unitario}</span>
                     </li>
                 ))}
             </ul>
