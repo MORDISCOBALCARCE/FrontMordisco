@@ -12,7 +12,7 @@ export function PassRecoveryModal({isOpen, onClose}: Props) {
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [password, setPassword] = useState("");
-
+  const [showPassword, setShowPassword] = useState(false);
   const [token, setToken] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -50,6 +50,11 @@ export function PassRecoveryModal({isOpen, onClose}: Props) {
 
   async function handleResetPassword() {
     setError("");
+    if (password.length < 8) {
+      setError('La contraseña debe tener al menos 8 caracteres');
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -63,6 +68,7 @@ export function PassRecoveryModal({isOpen, onClose}: Props) {
       setEmail("");
       setCode("");
       setPassword("");
+      setShowPassword(false);
       setToken("");
       setSuccess("");
       onClose();
@@ -80,6 +86,7 @@ export function PassRecoveryModal({isOpen, onClose}: Props) {
     setEmail("");
     setCode("");
     setPassword("");
+    setShowPassword(false);
     setToken("");
     setError("");
     onClose();
@@ -161,20 +168,35 @@ export function PassRecoveryModal({isOpen, onClose}: Props) {
               onChange={(e) => setCode(e.target.value)}
             />
 
-            <input
-              className="w-full px-4 py-4 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default"
-              type="password"
-              placeholder="Nueva contraseña"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <div className="relative group">
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-(--on-surface-variant) hover:text-(--primary) focus:outline-none transition-colors z-20"
+                title={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
+              >
+                {showPassword ? 'lock_open_right' : 'lock'}
+              </button>
+
+              <input
+                className="w-full pl-12 pr-4 py-4 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[16px] focus:outline-none focus:ring-2 focus:ring-(--primary) focus:border-transparent transition-all placeholder:text-(--on-surface-variant)/40"
+                type={showPassword ? "text" : "password"}
+                placeholder="Nueva contraseña"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
 
             <button
               onClick={handleResetPassword}
-              disabled={loading}
-              className="mt-5 w-full bg-[#F15A24] text-white py-4 rounded-full"
+              disabled={loading || !!success}
+              className={`mt-5 w-full text-white py-4 rounded-full transition-all duration-300 ${
+                loading || success
+                  ? "bg-[#F15A24]/60 cursor-not-allowed shadow-none"
+                  : "bg-[#F15A24] hover:opacity-90"
+              }`}
             >
-              {loading ? "Guardando..." : "Cambiar contraseña"}
+              {success ? "Actualizado ✓" : loading ? "Guardando..." : "Cambiar contraseña"}
             </button>
           </>
         )}
