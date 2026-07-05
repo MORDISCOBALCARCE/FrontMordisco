@@ -6,6 +6,7 @@ import { useAuth } from '../../context/AuthContex';
 import { NavLink } from 'react-router-dom';
 import { PassRecoveryModal } from './passwordRecoveryModal';
 
+
 //import { NavLink, useNavigate} from 'react-router-dom';
 
 
@@ -24,11 +25,12 @@ function Login() {
   const {login, error, clearError} = useAuth()
   // 2. Estado local para renderizar el error en pantalla
   const [errores, setErrores] = useState(error);
- 
+ const [passwordError, setPasswordError] = useState('');
 
 
 function resetearErrores() {
   setErrores('');
+  setPasswordError('');
   clearError();
 }
 
@@ -43,7 +45,13 @@ function resetearErrores() {
       //setError('Por favor, completa todos los campos');
       return
     }
-    
+    if(password.length < 8) {
+      setIsLoading(false);
+      setPasswordError('La contraseña debe tener al menos 8 caracteres');
+      return;
+    }
+
+
     try {
       const response = await login(email,password)  
       if ( !response.access_token ) {
@@ -143,6 +151,11 @@ function resetearErrores() {
                   required
                 />
               </div>
+              {passwordError && (
+                <p className="text-red-600 dark:text-red-400 text-[13px] font-medium ml-1 mt-1 transition-all animate-fade-in">
+                  {passwordError}
+                </p>
+              )}
             </div>
 
             <div className="pt-(--p-sm)">
