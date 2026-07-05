@@ -1,4 +1,4 @@
-import { useAuth } from "../../context/AuthContex";
+import { useAuth } from "../../context/AuthContext/AuthContext";
 import { Navigate, Outlet } from "react-router-dom";
 
 export function PublicRoute() {

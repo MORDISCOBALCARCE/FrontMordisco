@@ -1,5 +1,5 @@
 import { useEffect,useState } from "react";
-import { type Theme } from '../types/types'
+import { type Theme } from '../types/type'
 
     function getSystemTheme(){
         return window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light'

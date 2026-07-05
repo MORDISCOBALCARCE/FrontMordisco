@@ -130,11 +130,11 @@ export function TablaLocales() {
               <div className="bg-white rounded-2xl shadow-2xl p-8 w-100 max-w-[90%]">
                 
                 <h3 className="text-2xl font-bold mb-4">
-                  Función no disponible
+                  Agregar Nuevo Local
                 </h3>
 
                 <p className="text-gray-600 mb-6">
-                  La creación de locales todavía no está implementada.
+                  Para agregar un nuevo local, por favor contáctese con el Administrador.
                 </p>
 
                 <div className="flex justify-end">

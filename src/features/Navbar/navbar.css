@@ -1,0 +1,151 @@
+.glass-nav {
+  background-color: #FFFBF2;
+  /* Color crema de fondo */
+  height: 100px;
+  /* Un poco más alto para el logo grande */
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #FEEED7;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* --- LOGO GRANDE --- */
+.logo-section {
+  flex-shrink: 0; 
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  max-height: 150px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.05);
+}
+
+.nav-links-center {
+  display: flex;
+  gap: 40px;
+}
+
+.nav-links-center a {
+  text-decoration: none;
+  color: #5D4037;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* --- LADO DERECHO --- */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  /* Espacio entre los 3 bloques */
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  color: #5D4037;
+}
+
+/* Carrito y Badge */
+.cart-icon-wrapper {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #FF5C1F;
+  /* Naranja Mordisco */
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 11px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #FFFBF2;
+}
+
+/* Botón Mi Cuenta */
+.btn-account {
+  background-color: #5D4037;
+  /* Marrón Chocolate */
+  color: white !important;
+  padding: 12px 28px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.btn-account .material-icons-round {
+  color: white;
+  font-size: 20px;
+}
+
+/* Iconos generales */
+.material-icons-round {
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* ==========================================
+   📱 CONFIGURACIÓN PARA CELULARES (MÁXIMO 768PX)
+   ========================================== */
+@media (max-width: 768px) {
+  .glass-nav {
+    height: 70px; /* Reducimos la altura general del navbar en celular */
+  }
+
+  .nav-container {
+    padding: 0 12px; /* Reducimos el margen lateral para aprovechar la pantalla */
+  }
+
+  .logo-img {
+    height: 55px; /* El logo se achica proporcionalmente para entrar en los 70px del nav */
+  }
+
+  .nav-actions {
+    gap: 8px; /* Espaciado mucho más compacto entre elementos */
+  }
+
+  .material-icons-round {
+    font-size: 24px; /* Iconos un poco más pequeños y estilizados para celular */
+  }
+
+  .btn-account {
+    padding: 6px 12px; /* Botones más compactos que no desbordan */
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    gap: 4px;
+  }
+
+  .btn-account .material-icons-round {
+    font-size: 16px; /* Icono interno del botón más chico */
+  }
+}

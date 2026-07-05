@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { enviarDatos } from "./service";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import type React from "react";
+import { enviarDatos } from "./hooks/service";
 
 export function Crear_user() {
   const [nombre, setNombre] = useState('');
@@ -11,10 +11,13 @@ export function Crear_user() {
   const [password, setPassword] = useState('');
   const [mensaje, setMensaje] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [passwordError, setPasswordError] = useState('');
 
   const navigate = useNavigate();
 
   function resetearErrores() {
+    setPasswordError('')
     setMensaje('');
   }
 
@@ -27,6 +30,11 @@ export function Crear_user() {
       setMensaje('Por favor, completa todos los campos');
       return;
     }
+    if (password.length < 8) {
+      setIsLoading(false);
+      setPasswordError('La contraseña debe tener al menos 8 caracteres');
+      return;
+    }
 
     try {
       const usuario = { nombre, apellido, telefono, password, email };
@@ -34,7 +42,6 @@ export function Crear_user() {
       // Reemplazamos el alert nativo por una redirección fluida o un mensaje de éxito si lo preferís
       navigate('/login');
     } catch (error) {
-      console.error(error);
       setMensaje('Hubo un error al registrar el usuario');
     } finally {
       setIsLoading(false);
@@ -43,7 +50,7 @@ export function Crear_user() {
 
   return (
     <div className="bg-(--background) min-h-screen flex justify-center p-(--p-margin-mobile) md:p-(--p-lg) selection:bg-(--primary-container) selection:text-(--on-primary-container) antialiased">
-      
+
       {/* Ambient Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-[10%] -left-[5%] w-[40vw] h-[40vw] rounded-full bg-(--primary)/5 blur-[120px]"></div>
@@ -53,11 +60,11 @@ export function Crear_user() {
       {/* Register Container */}
       <main className="relative w-full max-w-120 z-10 transition-transform duration-75 ease-out">
         <div className="bg-(--surface-container-low) rounded-4xl p-(--p-md) md:p-(--p-xl) glass-depth border border-(--outline-variant)/30 transition-all duration-500 hover:translate-y-1">
-          
+
           {/* Header Section */}
           <div className="flex flex-col items-center mb-(--p-mb-xl)">
             <h1 className="text-[24px] font-bold leading-8 text-(--on-surface) text-center">Crear Cuenta</h1>
-            
+
             {/* CONTENEDOR DEL ERROR */}
             {mensaje && (
               <div className="mt-4 w-full flex items-center gap-2 p-3 rounded-default bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 text-[14px] transition-all duration-300">
@@ -68,7 +75,7 @@ export function Crear_user() {
 
           {/* Form Section */}
           <form className="space-y-(--p-md)" onSubmit={handleSubmit}>
-            
+
             {/* Campo: Nombre */}
             <div className="space-y-(--p-sm)">
               <label className="text-[14px] font-semibold text-(--on-surface-variant) block ml-1" htmlFor="nombre">
@@ -78,11 +85,11 @@ export function Crear_user() {
                 <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-(--on-surface-variant) group-focus-within:text-(--primary) transition-colors">
                   badge
                 </span>
-                <input 
-                  className="w-full pl-12 pr-4 py-4 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[16px] focus:outline-none focus:ring-2 focus:ring-(--primary) focus:border-transparent transition-all placeholder:text-(--on-surface-variant)/40" 
-                  id="nombre" 
-                  name="nombre" 
-                  placeholder="Ingresar nombre" 
+                <input
+                  className="w-full pl-12 pr-4 py-4 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[16px] focus:outline-none focus:ring-2 focus:ring-(--primary) focus:border-transparent transition-all placeholder:text-(--on-surface-variant)/40"
+                  id="nombre"
+                  name="nombre"
+                  placeholder="Ingresar nombre"
                   type="text"
                   value={nombre}
                   onChange={(e) => setNombre(e.target.value)}
@@ -102,11 +109,11 @@ export function Crear_user() {
                 <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-(--on-surface-variant) group-focus-within:text-(--primary) transition-colors">
                   subtitles
                 </span>
-                <input 
-                  className="w-full pl-12 pr-4 py-4 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[16px] focus:outline-none focus:ring-2 focus:ring-(--primary) focus:border-transparent transition-all placeholder:text-(--on-surface-variant)/40" 
-                  id="apellido" 
-                  name="apellido" 
-                  placeholder="Ingresar apellido" 
+                <input
+                  className="w-full pl-12 pr-4 py-4 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[16px] focus:outline-none focus:ring-2 focus:ring-(--primary) focus:border-transparent transition-all placeholder:text-(--on-surface-variant)/40"
+                  id="apellido"
+                  name="apellido"
+                  placeholder="Ingresar apellido"
                   type="text"
                   value={apellido}
                   onChange={(e) => setApellido(e.target.value)}
@@ -126,11 +133,11 @@ export function Crear_user() {
                 <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-(--on-surface-variant) group-focus-within:text-(--primary) transition-colors">
                   mail
                 </span>
-                <input 
-                  className="w-full pl-12 pr-4 py-4 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[16px] focus:outline-none focus:ring-2 focus:ring-(--primary) focus:border-transparent transition-all placeholder:text-(--on-surface-variant)/40" 
-                  id="email" 
-                  name="email" 
-                  placeholder="ejemplo@correo.com" 
+                <input
+                  className="w-full pl-12 pr-4 py-4 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[16px] focus:outline-none focus:ring-2 focus:ring-(--primary) focus:border-transparent transition-all placeholder:text-(--on-surface-variant)/40"
+                  id="email"
+                  name="email"
+                  placeholder="ejemplo@correo.com"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -147,15 +154,22 @@ export function Crear_user() {
                 Contraseña<span className="text-red-500 font-bold">*</span>
               </label>
               <div className="relative group">
-                <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-(--on-surface-variant) group-focus-within:text-(--primary) transition-colors">
-                  lock
-                </span>
-                <input 
-                  className="w-full pl-12 pr-4 py-4 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[16px] focus:outline-none focus:ring-2 focus:ring-(--primary) focus:border-transparent transition-all placeholder:text-(--on-surface-variant)/40" 
-                  id="password" 
-                  name="password" 
-                  placeholder="••••••••" 
-                  type="password"
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-(--on-surface-variant) hover:text-(--primary) focus:outline-none transition-colors z-20"
+                  title={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
+                >
+                  {/* Si querés mantener estrictamente el ícono de "lock", podés dejarlo estático, 
+                      pero cambiarlo por 'visibility' / 'visibility_off' mejora mucho la UX */}
+                  {showPassword ? 'lock_open_right' : 'lock'}
+                </button>
+                <input
+                  className="w-full pl-12 pr-4 py-4 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[16px] focus:outline-none focus:ring-2 focus:ring-(--primary) focus:border-transparent transition-all placeholder:text-(--on-surface-variant)/40"
+                  id="password"
+                  name="password"
+                  placeholder="••••••••"
+                  type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   disabled={isLoading}
@@ -163,6 +177,11 @@ export function Crear_user() {
                   required
                 />
               </div>
+              {passwordError && (
+                <p className="text-red-600 dark:text-red-400 text-[13px] font-medium ml-1 mt-1 transition-all animate-fade-in">
+                  {passwordError}
+                </p>
+              )}
             </div>
 
             {/* Campo: Teléfono */}
@@ -174,11 +193,11 @@ export function Crear_user() {
                 <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-(--on-surface-variant) group-focus-within:text-(--primary) transition-colors">
                   call
                 </span>
-                <input 
-                  className="w-full pl-12 pr-4 py-4 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[16px] focus:outline-none focus:ring-2 focus:ring-(--primary) focus:border-transparent transition-all placeholder:text-(--on-surface-variant)/40" 
-                  id="telefono" 
-                  name="tel" 
-                  placeholder="+54 9..." 
+                <input
+                  className="w-full pl-12 pr-4 py-4 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[16px] focus:outline-none focus:ring-2 focus:ring-(--primary) focus:border-transparent transition-all placeholder:text-(--on-surface-variant)/40"
+                  id="telefono"
+                  name="tel"
+                  placeholder="+54 9..."
                   type="text"
                   value={telefono}
                   onChange={(e) => setTelefono(e.target.value)}
@@ -191,12 +210,11 @@ export function Crear_user() {
 
             {/* Botón de Enviar */}
             <div className="pt-(--p-sm)">
-              <button 
-                className={`squishy-btn w-full text-white text-[18px] py-4 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group ${
-                  isLoading 
-                    ? "bg-[#F15A24]/80 cursor-not-allowed" 
+              <button
+                className={`squishy-btn w-full text-white text-[18px] py-4 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group ${isLoading
+                    ? "bg-[#F15A24]/80 cursor-not-allowed"
                     : "bg-[#F15A24] hover:bg-(--primary)"
-                }`}
+                  }`}
                 type="submit"
                 disabled={isLoading}
               >
@@ -219,7 +237,7 @@ export function Crear_user() {
           </form>
 
           {/* Footer Link */}
-          
+
         </div>
       </main>
     </div>
