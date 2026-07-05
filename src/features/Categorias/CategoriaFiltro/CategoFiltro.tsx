@@ -42,7 +42,7 @@ export function CategoFiltro() {
 
     return (
         <section className={styles.cont_categ}>
-            <h1 className="text-2xl font-extrabold mb-6 text-accent-brown dark:text-orange-100 uppercase tracking-wider">Categoria</h1>
+            <h1 className="text-2xl font-extrabold mb-6 text-accent-brown dark:text-orange-100 uppercase tracking-wider">Categoría</h1>
             <h2 className="text-2xl font-extrabold mb-6 text-accent-brown dark:text-orange-100 uppercase tracking-wider">{nombre}</h2>
 
             <div className={styles.card_categ}>
