@@ -162,7 +162,7 @@ export function Crear_user() {
                 >
                   {/* Si querés mantener estrictamente el ícono de "lock", podés dejarlo estático, 
                       pero cambiarlo por 'visibility' / 'visibility_off' mejora mucho la UX */}
-                  {showPassword ? 'visibility' : 'lock'}
+                  {showPassword ? 'lock_open_right' : 'lock'}
                 </button>
                 <input
                   className="w-full pl-12 pr-4 py-4 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[16px] focus:outline-none focus:ring-2 focus:ring-(--primary) focus:border-transparent transition-all placeholder:text-(--on-surface-variant)/40"

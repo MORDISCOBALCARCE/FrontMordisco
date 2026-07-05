@@ -137,7 +137,7 @@ function Login() {
                 >
                   {/* Si querés mantener estrictamente el ícono de "lock", podés dejarlo estático, 
                       pero cambiarlo por 'visibility' / 'visibility_off' mejora mucho la UX */}
-                  {showPassword ? 'visibility' : 'lock'}
+                  {showPassword ? 'lock_open_right' : 'lock'}
                 </button>
 
                 <input
