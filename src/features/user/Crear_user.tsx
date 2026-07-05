@@ -11,10 +11,13 @@ export function Crear_user() {
   const [password, setPassword] = useState('');
   const [mensaje, setMensaje] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+ const [showPassword, setShowPassword] = useState(false);
+  const [passwordError, setPasswordError] = useState('');
 
   const navigate = useNavigate();
 
   function resetearErrores() {
+    setPasswordError('');
     setMensaje('');
   }
 
@@ -25,6 +28,11 @@ export function Crear_user() {
     if (!nombre || !apellido || !email || !password || !telefono) {
       setIsLoading(false);
       setMensaje('Por favor, completa todos los campos');
+      return;
+    }
+     if(password.length < 8) {
+      setIsLoading(false);
+      setPasswordError('La contraseña debe tener al menos 8 caracteres');
       return;
     }
 
@@ -147,15 +155,22 @@ export function Crear_user() {
                 Contraseña<span className="text-red-500 font-bold">*</span>
               </label>
               <div className="relative group">
-                <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-(--on-surface-variant) group-focus-within:text-(--primary) transition-colors">
-                  lock
-                </span>
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-(--on-surface-variant) hover:text-(--primary) focus:outline-none transition-colors z-20"
+                  title={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
+                >
+                  {/* Si querés mantener estrictamente el ícono de "lock", podés dejarlo estático, 
+                      pero cambiarlo por 'visibility' / 'visibility_off' mejora mucho la UX */}
+                  {showPassword ? 'visibility' : 'lock'}
+                </button>
                 <input 
                   className="w-full pl-12 pr-4 py-4 bg-(--surface-container-lowest) border border-(--outline-variant) rounded-default text-[16px] focus:outline-none focus:ring-2 focus:ring-(--primary) focus:border-transparent transition-all placeholder:text-(--on-surface-variant)/40" 
                   id="password" 
                   name="password" 
                   placeholder="••••••••" 
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   disabled={isLoading}
@@ -163,6 +178,11 @@ export function Crear_user() {
                   required
                 />
               </div>
+              {passwordError && (
+                <p className="text-red-600 dark:text-red-400 text-[13px] font-medium ml-1 mt-1 transition-all animate-fade-in">
+                  {passwordError}
+                </p>
+              )}
             </div>
 
             {/* Campo: Teléfono */}
