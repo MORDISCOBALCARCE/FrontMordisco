@@ -16,12 +16,7 @@ export function CardPedido({ pedido }: props) {
         if (estado === pedido.estado) return;
 
         const actualizarEstadoBack = async () => {
-            try {
-                const enviar = await patchPedido({ estado }, pedido.id_pedido, fetchAuth);
-            } catch (error) {
-
-            }
-
+            await patchPedido({ estado }, pedido.id_pedido, fetchAuth);
         }
         actualizarEstadoBack()
 

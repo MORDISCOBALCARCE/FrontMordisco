@@ -14,7 +14,7 @@ export function CardClienteCarrito({ pedido }: Props) {
             <div className="cont-principal">
                 <div className="p-cont">{pedido.detalles.map((p) => <div className="cont-div" key={p.id_detalle}>
                     <img src={`${url_imagen}/${p.producto.imagen}`} alt={`${p.producto.nombre}`} style={{ width: '50px', height: '50px' }} />
-                    <p>ID Pedido: {pedido.id_pedido}</p>
+                    <p>Pedido: {pedido.id_pedido}</p>
                     <p>Cantidad: {p.cantidad}</p>
                     <p>Producto: {p.producto.nombre}</p>
                     <p>Fecha: {pedido.fecha_pedido}</p>
