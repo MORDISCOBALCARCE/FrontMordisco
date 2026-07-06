@@ -135,8 +135,6 @@ function Login() {
                   className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-(--on-surface-variant) hover:text-(--primary) focus:outline-none transition-colors z-20"
                   title={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
                 >
-                  {/* Si querés mantener estrictamente el ícono de "lock", podés dejarlo estático, 
-                      pero cambiarlo por 'visibility' / 'visibility_off' mejora mucho la UX */}
                   {showPassword ? 'lock_open_right' : 'lock'}
                 </button>
 
@@ -188,7 +186,7 @@ function Login() {
             </div>
           </form>
 
-          {/* Footer Links */}
+          {/* Footer */}
           <div className="mt-(--p-mt-xl) flex flex-col items-center gap-(--p-md)">
             <button
               type="button"
