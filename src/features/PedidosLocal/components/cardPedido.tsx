@@ -16,12 +16,7 @@ export function CardPedido({ pedido }: props) {
         if (estado === pedido.estado) return;
 
         const actualizarEstadoBack = async () => {
-            try {
-                const enviar = await patchPedido({ estado }, pedido.id_pedido, fetchAuth);
-            } catch (error) {
-
-            }
-
+            await patchPedido({ estado }, pedido.id_pedido, fetchAuth);
         }
         actualizarEstadoBack()
 
@@ -40,14 +35,25 @@ export function CardPedido({ pedido }: props) {
             <ul>
                 {pedido.detalles.map((p) => (
                     <li key={p.id_detalle}>
-                        <span><strong>{p.producto.nombre}:  {p.cantidad}</strong></span>
-                        <span>Descripcion: {p.producto.descripcion}</span>
-                       <span> precio unidad: {p.precio_unitario}</span>
+                        {p.producto ? ( // si el produto no fue eliminado lo muestra, si el producto se elimino muestra un msj
+                            <>
+                                <span><strong>{p.producto.nombre}:  {p.cantidad}</strong></span>
+                                <span>Descripcion: {p.producto.descripcion}</span>
+                                <span> precio unidad: {p.precio_unitario} $</span>
+                            </>
+                        ) : (
+                            <>
+                                <span><strong>Producto eliminado</strong></span>
+                                <span>Precio unitario Producto eliminado: {p.precio_unitario} $</span>
+
+                            </>
+
+                        )}
                     </li>
                 ))}
             </ul>
 
-            <p>Importe Total: {pedido.total}</p>
+            <p>Importe Total: {pedido.total} $</p>
             <button
                 style={{
                     // Un pequeño ajuste dinámico en línea solo para el color si cambia a 'Pendiente'
