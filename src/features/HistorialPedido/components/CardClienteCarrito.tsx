@@ -8,6 +8,7 @@ interface Props {
 
 export function CardClienteCarrito({ pedido }: Props) {
     return (
+        <div className="p-4 md:p-4  ">
         <article
             className=" bg-(--surface-container-low) border border-(--outline-variant) rounded-2xl p-6
             glass-depth
@@ -189,5 +190,6 @@ export function CardClienteCarrito({ pedido }: Props) {
 
 
         </article>
+        </div>
     )
 }

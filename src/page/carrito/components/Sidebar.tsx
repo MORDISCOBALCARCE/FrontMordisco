@@ -4,7 +4,7 @@ export function Sidebar() {
 
     return (
         <nav
-            className=" bg-(--surface-container-lowest) text-(--on-surface) border border-(--outline-variant) rounded-2xl p-4 shadow-sm flex flex-col gap-3 "
+            className=" mt-4 ml-2 bg-(--surface-container-lowest) text-(--on-surface) border border-(--outline-variant) rounded-2xl p-4 shadow-sm flex flex-col gap-3 "
         >
 
             <NavLink
