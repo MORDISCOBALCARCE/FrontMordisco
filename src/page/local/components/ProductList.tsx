@@ -53,8 +53,8 @@ export function ProductList() {
             <tr className="bg-(--surface-container) border-b border-(--outline-variant)">
               <th className="px-6 py-4 text-xs font-black uppercase text-(--on-surface-variant)">Imagen</th>
               <th className="px-6 py-4 text-xs font-black uppercase text-(--on-surface-variant)">Nombre</th>
-              <th className="px-6 py-4 text-xs font-black uppercase text-(--on-surface-variant)">Categoria</th>
-              <th className="px-6 py-4 text-xs font-black uppercase text-(--on-surface-variant)">Descripcion</th>
+              <th className="px-6 py-4 text-xs font-black uppercase text-(--on-surface-variant)">Categoría</th>
+              <th className="px-6 py-4 text-xs font-black uppercase text-(--on-surface-variant)">Descripción</th>
               <th className="px-6 py-4 text-xs font-black uppercase text-(--on-surface-variant)">Estado</th>
               <th className="px-6 py-4 text-xs font-black uppercase text-(--on-surface-variant)">Precio</th>
               <th className="px-6 py-4 text-xs font-black uppercase text-center text-(--on-surface-variant)">Editar / Eliminar</th>
