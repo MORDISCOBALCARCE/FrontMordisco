@@ -26,13 +26,13 @@ function App() {
   return (
     <>
 
-      <div className=" min-h-screen bg-background-light dark:bg-background-dark text-secondary dark:text-gray-100 transition-colors duration-300">
+      <div className=" grid grid-rows-[auto_1fr_auto] min-h-screen bg-background-light dark:bg-background-dark text-secondary dark:text-gray-100 transition-colors duration-300">
         <BrowserRouter>
           <ContextProvider>
             <CarritoProvider>
 
             <Navbar theme={theme} onToggle={toggleTheme} />
-
+        <div>
             <Routes>
               <Route path="/" element={<Home />} />
                 <Route path="/categoria/:nombre" element={<CategoFiltro />} />
@@ -61,9 +61,11 @@ function App() {
 
             </Routes>
 
+          </div>
             </CarritoProvider>
           </ContextProvider>
-          <Footer />
+                <Footer />
+          
         </BrowserRouter>
       </div>
     </>

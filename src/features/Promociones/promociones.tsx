@@ -42,8 +42,11 @@ export default function Promociones() {
         <div className={styles.carrusel}>
         <button className={styles.boton} onClick={anterior} >◀</button>
           <Hamburgesa prod={promoActual}/>
+          
         <button className={styles.boton} onClick={siguiente} >▶</button>
+        
         </div>
+        
       </div>
     </section>
   );
