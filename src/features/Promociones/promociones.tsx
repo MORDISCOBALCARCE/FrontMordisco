@@ -37,13 +37,16 @@ export default function Promociones() {
   const promoActual = promociones[index];
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-      <div className="relative overflow-hidden rounded-3xl bg-primary promo-gradient min-h-[450px] flex items-center shadow-2xl shadow-primary/20">
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 mt-4 ">
+      <div className="relative overflow-hidden rounded-3xl bg-primary promo-gradient min-h-[450px] flex items-center shadow-2xl shadow-primary/20 pt-5">
         <div className={styles.carrusel}>
         <button className={styles.boton} onClick={anterior} >◀</button>
           <Hamburgesa prod={promoActual}/>
+          
         <button className={styles.boton} onClick={siguiente} >▶</button>
+        
         </div>
+        
       </div>
     </section>
   );
