@@ -8,11 +8,13 @@ interface Props {
 
 export function CardClienteCarrito({ pedido }: Props) {
     return (
+        <div className="p-4 md:p-4  ">
         <article
             className=" bg-(--surface-container-low) border border-(--outline-variant) rounded-2xl p-6
             glass-depth
             transition
             hover:shadow-xl
+            mb-2
             "
         >
 
@@ -163,12 +165,13 @@ export function CardClienteCarrito({ pedido }: Props) {
                 flex
                 justify-between
                 items-center
+                rounded-xl
                 "
             >
 
                 <span className="
                     font-semibold
-                    text-(--on-surface-variant)
+                    text-white
                 ">
                     Total pagado
                 </span>
@@ -177,8 +180,7 @@ export function CardClienteCarrito({ pedido }: Props) {
                 <strong
                     className="
                     text-xl
-                    font-black
-                    text-(--primary)
+                    text-white
                     "
                 >
                     ${pedido.total}
@@ -188,5 +190,6 @@ export function CardClienteCarrito({ pedido }: Props) {
 
 
         </article>
+        </div>
     )
 }

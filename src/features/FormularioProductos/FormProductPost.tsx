@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react"
 import { postProductos } from "./service/service"
 import { useApiForm } from "./hooks/useFormDataApi"
+import Swal from 'sweetalert2'
 
 export function FormProductPost() {
     const [nombre, setNombre] = useState('')
@@ -29,7 +30,7 @@ export function FormProductPost() {
         try {
             const resp = await postProductos(newProduct, fetchAuthMedia)
             if (resp.code === 201) {
-                alert('¡Producto creado con éxito!');
+                Swal.fire("Producto Creado con éxito");
             }
         } catch (error) {
             setError('Error al intentar guardar el producto.');
