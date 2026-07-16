@@ -37,8 +37,8 @@ export function TablaProductosLocal({ producto, onDelete, onRestore, onEdit }: p
 
     return (
         <>
-            <tr className="text-(--table-text) hover:bg-(--surface-container-low) hover:text-white transition-colors">
-                <td ><img src={`${url_imagen}/${producto.imagen}`} alt={producto.nombre} style={{ width: '50 px', height: '50px', borderRadius: '50px' }} /></td>
+            <tr className="text-(--table-text) hover:bg-(--surface-container-low) hover:text-(--primary-container) transition-colors ">
+                <td className="px-6 py-5"><img src={`${url_imagen}/${producto.imagen}`} alt={producto.nombre} style={{ width: '50 px', height: '50px', borderRadius: '50px' }} /></td>
                 <td className="px-6 py-5" >
                     <div className="font-bold">
                         {producto.nombre}

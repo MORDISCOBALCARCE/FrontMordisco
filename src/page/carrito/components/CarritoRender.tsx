@@ -2,6 +2,7 @@ import "../style.css";
 import { useState } from "react";
 import { useAuth } from "../../../context/AuthContext/AuthContext";
 import { useCarrito } from "../../../context/CarritoContext/CarritoContext";
+import Swal from "sweetalert2";
 import {
     Estado,
     EstadoDePago,
@@ -22,8 +23,28 @@ export function CarritoRender() {
    
 
     const enviarPedidoAlBackend = async () => {
-        if (carrito.length === 0) return alert("Tu carrito está vacío.");
+        if (carrito.length === 0){
+            
+       return(Swal.fire({
+            icon: "error",
+            title: "Tu carrito está vacío",
+            
+            })); 
+          
+        } 
 
+        const result = await Swal.fire({
+            title: "¿Quieres realizar la Compra?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "¡Sí, adelante!",
+            cancelButtonText: "Cancelar"
+        });
+
+       
+        if (!result.isConfirmed) return;
         const pedido: createPedido = {
             estado: Estado.PENDIENTE,
             modalidad: ModoRetiro.RETIRO,
@@ -48,13 +69,17 @@ export function CarritoRender() {
             const resp = await postPedido(pedido, fetchAuth);
 
             if (resp.code === 201) {
-                alert("¡Pedido realizado con éxito!");
+                Swal.fire("Compra realizada con éxito!");
                 limpiarCarrito();
             } else {
                 throw new Error(`Error code ${resp.code}: ${resp.message}`);
             }
         } catch (error) {
-            alert(error);
+            Swal.fire({
+                icon: "error",
+                title: "Hubo un problema",
+                text: String(error)
+            });
         }
     };
 

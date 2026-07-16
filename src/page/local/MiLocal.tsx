@@ -8,6 +8,7 @@ export function MiLocal() {
 
   return (
     <>
+    <div className="p-4 md:p-4  ">
       <header className="mb-6">
         <h1 className="text-lg font-black">
           Bienvenido:
@@ -31,7 +32,7 @@ export function MiLocal() {
         </article>
       </section>
 
-
+    </div>
     </>
 
   )
