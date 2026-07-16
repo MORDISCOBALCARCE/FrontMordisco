@@ -1,24 +1,24 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Navbar } from "./componentes/nav-bar/Navbar";
+import { Navbar } from "./features/Navbar/Navbar";
 import Login from "./features/Login/Login";
-import Footer from "./componentes/Footer/Footer";
+import Footer from "./features/Footer/Footer";
 import Home from "./page/home/home";
 import { useThemeMode } from './hooks/useThemeMode';
 import Menu from './page/menu/menu';
-import { CategoFiltro } from './componentes/Categorias/CategoriaFiltro/CategoFiltro';
-import { ContextProvider } from './context/AuthContex';
-import { ProtectedRoute } from './features/auth/protectedRoute';
-import { PublicRoute } from './features/auth/routesPublic';
-import { Crear_user } from './features/user/Crear_user';
+import { CategoFiltro } from './features/Categorias/CategoriaFiltro/CategoFiltro';
+import { ContextProvider } from './context/AuthContext/AuthContext';
+import { ProtectedRoute } from './features/Auth/protectedRoute';
+import { PublicRoute } from './features/Auth/routesPublic';
+import { Crear_user } from './features/User/Crear_user';
 import { Administrador } from './page/admin/Administrador';
 import { MiLocal } from './page/local/MiLocal';
-import { FormProductPost } from './componentes/formularioProductos/FormProductPost';
-import { ProductList } from './page/local/ProductList';
-import { Carrito } from './page/carrito/Carrito';
-import { CarritoProvider } from './context/caritoContext/CarritoContext';
-import { Pedidos_local } from './features/pedidos-local/Pedidos_local';
-import { RenderCarrito } from './page/carrito/renderCarrito';
-import { PedidoPorCiiente } from './features/pedidoPorCliente/PedidoPorCliente';
+import { FormProductPost } from './features/FormularioProductos/FormProductPost';
+import { ProductList } from './page/local/components/ProductList';
+import { CarritoRender } from './page/carrito/components/CarritoRender';
+import { CarritoProvider } from './context/CarritoContext/CarritoContext';
+import { Pedidos_local } from './features/PedidosLocal/Pedidos_local';
+import { CarritoLayout } from './page/carrito/CarritoLayout';
+import { PedidoPorCiiente } from './features/HistorialPedido/PedidoPorCliente';
 
 function App() {
   const { theme, toggleTheme } = useThemeMode()
@@ -26,16 +26,17 @@ function App() {
   return (
     <>
 
-      <div className="min-h-screen bg-background-light dark:bg-background-dark text-secondary dark:text-gray-100 transition-colors duration-300">
+      <div className=" grid grid-rows-[auto_1fr_auto] min-h-screen bg-background-light dark:bg-background-dark text-secondary dark:text-gray-100 transition-colors duration-300">
         <BrowserRouter>
           <ContextProvider>
             <CarritoProvider>
 
             <Navbar theme={theme} onToggle={toggleTheme} />
-
+        <div>
             <Routes>
               <Route path="/" element={<Home />} />
                 <Route path="/categoria/:nombre" element={<CategoFiltro />} />
+                <Route path="/menu" element={<Menu />} />
 
               <Route element={<PublicRoute />}>
                 <Route path="/login" element={<Login />} />
@@ -43,11 +44,10 @@ function App() {
               </Route>
 
               <Route element={<ProtectedRoute />}>
-                <Route path="/menu" element={<Menu />} />
                 <Route path='/admin' element={<Administrador />} />
 
-                <Route path='/carrito' element={<RenderCarrito/>} >
-                <Route index element={<Carrito/>} />
+                <Route path='/carrito' element={<CarritoLayout/>} >
+                <Route index element={<CarritoRender/>} />
                 <Route path='pedidos' element={<PedidoPorCiiente />}/>
                 </Route>
                 
@@ -61,9 +61,11 @@ function App() {
 
             </Routes>
 
+          </div>
             </CarritoProvider>
           </ContextProvider>
-          <Footer />
+                <Footer />
+          
         </BrowserRouter>
       </div>
     </>

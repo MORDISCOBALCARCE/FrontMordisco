@@ -1,12 +1,12 @@
-import { BuscarProductos} from "../../componentes/BuscarProducto/BuscarProducto";
-import { Categorias } from "../../componentes/Categorias/Categorias";
+import { BuscarProductos} from "../../features/BuscarProducto/BuscarProducto";
+import { Categorias } from "../../features/Categorias/Categorias";
 import { categoriasMock } from "../../data/Categorias.data";
-import Promociones from "../../componentes/promociones/promociones";
+import Promociones from "../../features/Promociones/promociones";
 import { useEffect, useState } from "react";
 import styles from './home.module.css'
 import { useProductos } from "../../hooks/useProductos";
 import type { Productos } from "../../types/type";
-import { Card } from "../menu/card";
+import { Card } from "../menu/components/card";
 
 
 export default function Home() {

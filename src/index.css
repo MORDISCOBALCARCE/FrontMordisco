@@ -2,14 +2,19 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 /* CONFIGURACIÓN NUEVA */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 
 @theme {
   --color-primary: #F26422;
   --color-secondary: #663F28;
   
-  --color-background-light: #fef0ec; 
- 
-
+  
+  /* --color-background-light: #fef0ec; */
+  --color-background-light: #f4e7c4;
   
   --color-background-dark: #1A1513;
 
