@@ -17,7 +17,7 @@ export function Crear_user() {
   const navigate = useNavigate();
 
   function resetearErrores() {
-    setPasswordError('')
+    setPasswordError('');
     setMensaje('');
   }
 
@@ -30,7 +30,7 @@ export function Crear_user() {
       setMensaje('Por favor, completa todos los campos');
       return;
     }
-    if (password.length < 8) {
+     if(password.length < 8) {
       setIsLoading(false);
       setPasswordError('La contraseña debe tener al menos 8 caracteres');
       return;
