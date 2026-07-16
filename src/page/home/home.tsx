@@ -31,7 +31,7 @@ export default function Home() {
         }
         const prodFilter = state.data.data.filter((p) => (p.nombre.toLowerCase().trim().includes(buscar.toLowerCase())))
         setFilter(prodFilter)
-    };
+      };
 
 
     return (
