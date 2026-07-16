@@ -93,7 +93,7 @@ export function ModalUsuarioForm({ usuario, onClose, onSuccess }: Props) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-start justify-center pt-40 md:pt-60 z-50 p-4  animate-fadeIn">
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-start justify-center pt-20 md:pt-30 z-50 p-4  animate-fadeIn">
       {/* Contenedor principal con alto máximo adaptativo y distribución flex col */}
       <div className="bg-(--surface-container-low) rounded-2xl p-5 w-full max-w-lg glass-depth border border-(--outline-variant)/30 max-h-[85vh] flex flex-col overflow-hidden">
         
