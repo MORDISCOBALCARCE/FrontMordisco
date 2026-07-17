@@ -11,12 +11,10 @@ export function Pedidos_local(){
     }
 
     return(
-        <>
-        <h1>Pedidos</h1>
-
-        <div className="cont_data">
-            {state.data.map((p)=><CardPedido key={p.id_pedido} pedido={p}/>)}
-        </div>
-        </>
+        
+        <section >
+            {state.data.toReversed().map((p)=><CardPedido key={p.id_pedido} pedido={p}/>)}
+        </section>
+        
     )
 }
