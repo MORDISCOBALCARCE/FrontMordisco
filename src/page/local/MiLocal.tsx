@@ -17,9 +17,6 @@ export function MiLocal() {
           </span>
         </h1>
 
-        <h2 className="mt-2 text-2xl font-bold">
-          Nuestros Productos
-        </h2>
       </header>
 
       <section className="flex gap-6 items-start">
